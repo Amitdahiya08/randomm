@@ -1,6 +1,7 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MATERIAL } from '../shared/material.imports';
 import { CourseService, Course } from '../core/services/course.service';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -23,8 +24,9 @@ interface Section {
     templateUrl: './course-details.component.html',
     styleUrls: ['./course-details.component.scss']
 })
-export class CourseDetailsComponent implements OnInit {
+export class CourseDetailsComponent implements OnInit, OnDestroy {
     private route = inject(ActivatedRoute);
+    private router = inject(Router);
     private svc = inject(CourseService);
 
     course = signal<Course | null>(null);
@@ -33,10 +35,26 @@ export class CourseDetailsComponent implements OnInit {
     testimonials = signal<any[]>([]);
     related = signal<Course[]>([]);
 
-    ngOnInit() {
-        const id = Number(this.route.snapshot.paramMap.get('id'));
-        if (!id) return;
+    private routeSubscription?: Subscription;
 
+    ngOnInit() {
+        // Subscribe to route parameter changes to handle navigation between courses
+        this.routeSubscription = this.route.paramMap.subscribe(params => {
+            const idParam = params.get('id');
+            if (!idParam) return;
+
+            // Handle both string and number IDs from the database
+            const id = isNaN(Number(idParam)) ? idParam : Number(idParam);
+
+            this.loadCourseData(id);
+        });
+    }
+
+    ngOnDestroy() {
+        this.routeSubscription?.unsubscribe();
+    }
+
+    private loadCourseData(id: number | string) {
         this.svc.getById(id).subscribe(c => {
             this.course.set(c);
             this.svc.getAuthor(c.authorId).subscribe(a => this.author.set(a));
@@ -72,6 +90,12 @@ export class CourseDetailsComponent implements OnInit {
     expandAllSections() {
         document.querySelectorAll('mat-expansion-panel').forEach(panel => {
             (panel as any).expanded = true;
+        });
+    }
+
+    navigateToCourse(courseId: number | string) {
+        this.router.navigate(['/courses', courseId]).then(() => {
+            window.scrollTo(0, 0);
         });
     }
 }

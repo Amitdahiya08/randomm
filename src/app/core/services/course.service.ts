@@ -4,7 +4,7 @@ import { map } from 'rxjs';
 
 export type Level = 'Beginner' | 'Intermediate' | 'Advanced';
 export interface Course {
-    id: number;
+    id: number | string;
     title: string;
     subtitle: string;
     authorId: number;
@@ -47,7 +47,7 @@ export class CourseService {
             )
         );
     }
-    getById(id: number) {
+    getById(id: number | string) {
         return this.http.get<Course>(`${this.API}/courses/${id}`);
     }
 
@@ -67,10 +67,10 @@ export class CourseService {
     }
 
     /** curriculum, testimonials (json-server arrays) */
-    getCurriculum(courseId: number) {
+    getCurriculum(courseId: number | string) {
         return this.http.get<any[]>(`${this.API}/curriculum?courseId=${courseId}`);
     }
-    getTestimonials(courseId: number) {
+    getTestimonials(courseId: number | string) {
         return this.http.get<any[]>(`${this.API}/testimonials?courseId=${courseId}`);
     }
 

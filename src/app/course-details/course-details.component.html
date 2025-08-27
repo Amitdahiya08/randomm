@@ -163,7 +163,7 @@
 
         <div class="list">
             @for (rc of related(); track rc.id) {
-            <div class="item">
+            <div class="item" (click)="navigateToCourse(rc.id)">
                 <img [src]="rc.thumbnailUrl" alt="">
                 <div class="meta">
                     <div class="t">{{ rc.title }}</div>

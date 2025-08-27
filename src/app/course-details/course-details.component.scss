@@ -211,6 +211,13 @@
     background: var(--surface-2);
     border: 1px solid #1c2a38;
     margin-bottom: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+        background: var(--surface-3, #1a2832);
+        transform: translateY(-1px);
+    }
 }
 
 .related img {
