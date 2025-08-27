@@ -5,12 +5,13 @@ import { CourseService, Course } from '../core/services/course.service';
 import { CourseCardComponent } from '../shared/ui/course-card/course-card.component';
 import { FormsModule } from '@angular/forms';
 import { MATERIAL } from '../shared/material.imports';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { HeaderComponent } from '../shared/ui/header/header.component';
 
 @Component({
     selector: 'app-course-discovery',
     standalone: true,
-    imports: [CommonModule, FormsModule, FiltersSidebarComponent, HeaderComponent, CourseCardComponent, ...MATERIAL],
+    imports: [CommonModule, FormsModule, RouterLink, FiltersSidebarComponent, HeaderComponent, CourseCardComponent, ...MATERIAL],
     templateUrl: './course-discovery.component.html',
     styleUrls: ['./course-discovery.component.scss']
 })
@@ -19,14 +20,25 @@ export class CourseDiscoveryComponent implements OnInit {
 
     courses = signal<Course[]>([]);
     filters = signal<any>({});
+    query = signal<string>('');
     sort = signal<'latest' | 'rating' | 'reviews' | 'az' | 'za'>('latest');
 
     // pagination
     page = signal(1);
     pageSize = 8;
 
+    private route = inject(ActivatedRoute);
+
     ngOnInit() {
-        this.loadCourses();
+        this.route.queryParams.subscribe(params => {
+            const q = params['q'] || '';
+            this.query.set(q);
+            if (q) {
+                this.courseService.search(q).subscribe(cs => this.courses.set(cs));
+            } else {
+                this.courses.set([]);
+            }
+        });
     }
 
     loadCourses() {

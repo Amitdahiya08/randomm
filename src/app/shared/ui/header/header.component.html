@@ -8,11 +8,26 @@
         <mat-form-field appearance="fill" class="search-field">
           <mat-label>Search Courses</mat-label>
           <mat-icon matPrefix class="cursor-pointer" (click)="goSearch()">search</mat-icon>
-          <input matInput [formControl]="query" (keyup.enter)="goSearch()" />
+
+          <input matInput [formControl]="query" [matAutocomplete]="auto" (keyup.enter)="goSearch()" />
+
           <button mat-icon-button matSuffix *ngIf="query.value" (click)="clear()" aria-label="Clear">
             <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
+
+        <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selectCourse($event.option.value)">
+          @for (c of options(); track c.id) {
+          <mat-option [value]="c.title">
+            <div class="ac-row d-flex align-items-center gap-2">
+              <img [src]="c.thumbnailUrl" alt="" width="40" height="28" style="object-fit:cover;border-radius:6px;" />
+              <span class="t flex-grow-1">{{ c.title }}</span>
+              <small class="text-muted">{{ c.provider.name }}</small>
+            </div>
+          </mat-option>
+          }
+        </mat-autocomplete>
+
 
         @if (options().length) {
         <div class="ac-list shadow">

@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../shared/ui/header/header.component';
 import { CourseService, Course } from '../core/services/course.service';
 import { EnrollmentService, Enrollment } from '../core/services/enrollment.service';
@@ -9,7 +10,7 @@ import { CourseCardComponent } from '../shared/ui/course-card/course-card.compon
 @Component({
     selector: 'app-dashboard',
     standalone: true,
-    imports: [CommonModule, HeaderComponent, CourseCardComponent],
+    imports: [CommonModule, RouterLink, HeaderComponent, CourseCardComponent],
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss']
 })

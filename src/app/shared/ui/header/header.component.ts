@@ -41,9 +41,10 @@ export class HeaderComponent {
     }
 
     selectCourse(c: Course) {
-        this.router.navigate(['/search'], { queryParams: { q: c.title, highlight: c.id } });
+        this.router.navigate(['/discover'], { queryParams: { q: this.query.value } });
         this.clear();
     }
+
 
     clear() { this.query.setValue(''); this.options.set([]); }
     // selectCourse(c: Course) { this.router.navigate(['/dashboard'], { queryParams: { highlight: c.id } }); this.clear(); }

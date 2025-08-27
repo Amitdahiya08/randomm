@@ -16,6 +16,7 @@ export interface Course {
     difficulty: Level;
     durationText: string;          // e.g., "6 months", "5 weeks", "8 weeks"
     skills?: string[];
+    whatYoullLearn?: string[];
     status: 'Published' | 'Draft';
     publishedDate: string;         // ISO
 }
@@ -34,10 +35,45 @@ export class CourseService {
     }
 
     search(term: string) {
-        const q = encodeURIComponent(term.trim());
-        if (!q) return this.getAll();
-        return this.http.get<Course[]>(`${this.API}/courses?q=${q}`);
+        const q = term.trim().toLowerCase();
+        if (!q) return this.getAll(); // empty query = all results
+
+        return this.http.get<Course[]>(`${this.API}/courses`).pipe(
+            map(courses =>
+                courses.filter(c =>
+                    c.title.toLowerCase().includes(q) ||
+                    c.skills?.some(s => s.toLowerCase().includes(q))
+                )
+            )
+        );
     }
+    getById(id: number) {
+        return this.http.get<Course>(`${this.API}/courses/${id}`);
+    }
+
+    getAuthor(userId: number) {
+        return this.http.get<any>(`${this.API}/users/${userId}`);
+    }
+
+    /** simple related: share at least 1 skill with current, exclude itself, top 5 by rating */
+    getRelated(base: Course, limit = 5) {
+        return this.getAll().pipe(
+            map(list => list
+                .filter(c => c.id !== base.id && c.skills?.some(s => base.skills?.includes(s)))
+                .sort((a, b) => b.rating - a.rating)
+                .slice(0, limit)
+            )
+        );
+    }
+
+    /** curriculum, testimonials (json-server arrays) */
+    getCurriculum(courseId: number) {
+        return this.http.get<any[]>(`${this.API}/curriculum?courseId=${courseId}`);
+    }
+    getTestimonials(courseId: number) {
+        return this.http.get<any[]>(`${this.API}/testimonials?courseId=${courseId}`);
+    }
+
 
     getNewlyLaunched(limit = 12) {
         return this.getAll().pipe(

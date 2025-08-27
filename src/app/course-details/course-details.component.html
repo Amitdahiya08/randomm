@@ -1,0 +1,183 @@
+<app-header></app-header>
+
+@if (course()) {
+<div class="course-details container-xxl py-4">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-wrap">
+        <a routerLink="/dashboard" class="crumb">Home</a>
+        <span class="sep">›</span>
+        <span class="crumb current">{{ course()!.title }}</span>
+    </nav>
+
+    <!-- Banner -->
+    <section class="banner card p-4 mb-3">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="title">{{ course()!.title }}</h1>
+                <p class="tagline">{{ course()!.subtitle }}</p>
+                <div class="created-by">
+                    Created by
+                    <a href="javascript:void(0)" class="author-link">
+                        {{ author()?.fullName }}
+                    </a>
+                </div>
+
+                <div class="actions mt-3 d-flex align-items-center gap-3">
+                    <button mat-raised-button color="primary" class="btn-enroll" (click)="enroll()">Enroll Now</button>
+                    <div class="enrolled muted">{{ course()!.enrollmentCount | number }} already enrolled</div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 d-none d-lg-flex align-items-center justify-content-center">
+                <div class="banner-art"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metrics Bar -->
+    <section class="metrics mb-4">
+        <div class="metric">
+            <div class="label">Level</div>
+            <div class="value">{{ course()!.difficulty }} Level</div>
+        </div>
+        <div class="metric">
+            <div class="label">Rating</div>
+            <div class="value">{{ course()!.rating }} ★ <span class="muted">({{ course()!.reviewCount | number
+                    }} reviews)</span></div>
+        </div>
+        <div class="metric">
+            <div class="label">Duration</div>
+            <div class="value">{{ course()!.durationText }}</div>
+        </div>
+        <div class="metric">
+            <div class="label">Flexible Schedule</div>
+            <div class="value">Learn at your own pace</div>
+        </div>
+    </section>
+
+    <!-- Tabs -->
+    <mat-tab-group class="details-tabs" animationDuration="250ms">
+        <mat-tab label="Overview">
+            <div class="card p-4">
+                <h6 class="mb-2">What you'll learn</h6>
+                <ul class="learn">
+                    @for (item of course()!.whatYoullLearn || []; track item) { <li>{{ item }}</li> }
+                </ul>
+
+                <h6 class="mt-4 mb-2">Skills you'll gain</h6>
+                <div class="skills">
+                    @for (skill of course()!.skills || []; track skill) { <span class="pill">{{ skill }}</span> }
+                </div>
+
+                <h6 class="mt-4 mb-2">Requirements</h6>
+                <ul class="req">
+                    <li>Basic computer literacy</li>
+                    <li>Internet connection</li>
+                    <li>Willingness to learn</li>
+                </ul>
+
+                <h6 class="mt-4 mb-2">Description</h6>
+                <p class="muted">
+                    {{ course()!.subtitle }}
+                </p>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Course Content">
+            <div class="card p-0">
+                <div class="content-head d-flex justify-content-between align-items-center px-3 py-3">
+                    <div class="muted">{{ totalSummary() }}</div>
+                    <a class="expand-all" href="javascript:void(0)" (click)="expandAllSections()">Expand
+                        all sections</a>
+                </div>
+
+                <mat-accordion multi>
+                    @for (s of sections(); track s.id) {
+                    <mat-expansion-panel>
+                        <mat-expansion-panel-header>
+                            <mat-panel-title>{{ s.title }}</mat-panel-title>
+                            <mat-panel-description>
+                                {{ s.lectures.length }} Lectures •
+                                {{ getSectionDurationHours(s) }}h {{ getSectionDurationMinutes(s) }}m
+                            </mat-panel-description>
+                        </mat-expansion-panel-header>
+
+                        <ul class="lectures list-unstyled m-0">
+                            @for (l of s.lectures; track l.id) {
+                            <li class="lecture">
+                                <span class="t">{{ l.title }}</span>
+                                <span class="time">{{ (l.durationMinutes/60) >= 1 ? (l.durationMinutes/60 |
+                                    number:'1.0-0') + 'h' : '' }}
+                                    {{ l.durationMinutes%60 }}m</span>
+                            </li>
+                            }
+                        </ul>
+                    </mat-expansion-panel>
+                    }
+                </mat-accordion>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Author Details">
+            <div class="card p-4">
+                <h6>Author</h6>
+                <div class="author d-flex gap-3 align-items-start">
+                    <img [src]="author()?.avatarUrl" class="avatar-lg" alt="">
+                    <div>
+                        <div class="fw-bold">{{ author()?.fullName }}</div>
+                        <div class="muted">{{ author()?.track }}</div>
+                        <p class="mt-2">{{ author()?.bio }}</p>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Testimonials">
+            <div class="card p-4">
+                <div class="row g-3">
+                    @for (t of testimonials(); track t.id) {
+                    <div class="col-md-6 col-lg-4">
+                        <div class="review">
+                            <div class="stars">★ {{ t.rating }}</div>
+                            <p class="text">{{ t.comment }}</p>
+                            <div class="user d-flex align-items-center gap-2">
+                                <img [src]="t.avatarUrl" class="avatar">
+                                <div>
+                                    <div class="name">{{ t.name }}</div>
+                                    <small class="muted">{{ t.affiliation }}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+
+    <!-- Related Courses -->
+    <section class="related card p-3 mt-4">
+        <div class="title-row d-flex justify-content-between align-items-center">
+            <h6 class="m-0">Related Courses</h6>
+        </div>
+
+        <div class="list">
+            @for (rc of related(); track rc.id) {
+            <div class="item">
+                <img [src]="rc.thumbnailUrl" alt="">
+                <div class="meta">
+                    <div class="t">{{ rc.title }}</div>
+                    <div class="sub muted">{{ rc.durationText }} • Last updated {{ rc.publishedDate | date:'MM/yyyy' }}
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="rating"> {{ rc.rating }} ★ <span class="muted">({{ rc.reviewCount | number }}
+                            reviews)</span></div>
+                    <span class="badge">Highest Rated</span>
+                </div>
+            </div>
+            }
+        </div>
+    </section>
+</div>
+}

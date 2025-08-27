@@ -28,13 +28,16 @@
             <div class="course-grid row g-3">
                 @for (c of paginated(); track c.id) {
                 <div class="col-md-6 col-lg-4">
-                    <app-course-card [thumbnailUrl]="c.thumbnailUrl" [title]="c.title" [provider]="c.provider.name"
-                        [rating]="c.rating" [reviewCount]="c.reviewCount" [enrollmentCount]="c.enrollmentCount"
-                        [difficulty]="c.difficulty" [durationText]="c.durationText" badgeText="New Launch">
-                    </app-course-card>
+                    <a class="no-decoration" [routerLink]="['/courses', c.id]">
+                        <app-course-card [thumbnailUrl]="c.thumbnailUrl" [title]="c.title" [provider]="c.provider.name"
+                            [rating]="c.rating" [reviewCount]="c.reviewCount" [enrollmentCount]="c.enrollmentCount"
+                            [difficulty]="c.difficulty" [durationText]="c.durationText" badgeText="New Launch">
+                        </app-course-card>
+                    </a>
                 </div>
                 }
             </div>
+
 
             <!-- Pagination -->
             <div class="pagination-wrap d-flex justify-content-center mt-4" *ngIf="totalPages() > 1">

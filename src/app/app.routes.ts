@@ -4,6 +4,7 @@ import { RegisterComponent } from './auth/register/register.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
 import { CourseDiscoveryComponent } from './course-discovery/course-discovery.component';
+import { CourseDetailsComponent } from './course-details/course-details.component';
 
 export const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -11,5 +12,6 @@ export const routes: Routes = [
     { path: 'auth/register', component: RegisterComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
     { path: 'search', component: CourseDiscoveryComponent, canActivate: [authGuard] },
+    { path: 'courses/:id', component: CourseDetailsComponent, canActivate: [authGuard] },
     { path: '**', redirectTo: 'dashboard' }
 ];

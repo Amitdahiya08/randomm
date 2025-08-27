@@ -54,16 +54,18 @@
       "difficulty": "Beginner",
       "durationText": "05 Weeks",
       "skills": [
-        "Prompt Engineering",
+        "Data Analysis",
+        "SQL",
+        "Data Visualization",
+        "Data Processing",
         "MS Excel",
         "Data Ethics",
-        "Document Management",
-        "Data Analysis"
+        "Statistical Analysis"
       ],
       "whatYoullLearn": [
-        "Gain an immersive understanding of analyst workflows.",
-        "Learn spreadsheets, SQL, R, Tableau.",
-        "Clean and organize data for analysis."
+        "Gain an immersive understanding of the practices and processes used by a junior or associate data analyst in their day-to-day job.",
+        "Learn how to clean and organize data for analysis, and complete analysis and calculations using spreadsheets, SQL and R programming.",
+        "Understand how to visualize and present data findings in dashboards, presentations and commonly used visualization platforms."
       ],
       "requirements": [
         "No experience required."
@@ -87,7 +89,22 @@
       "difficulty": "Beginner",
       "durationText": "6 months",
       "status": "Published",
-      "publishedDate": "2024-06-12T00:00:00.000Z"
+      "publishedDate": "2024-06-12T00:00:00.000Z",
+      "skills": [
+        "Python",
+        "Data Analysis",
+        "Data Visualization",
+        "Data Processing",
+        "NumPy",
+        "Pandas",
+        "APIs",
+        "Machine Learning"
+      ],
+      "whatYoullLearn": [
+        "Master Python programming fundamentals, including data structures, variables, and loops, to build a strong foundation for data science and AI.",
+        "Gain hands-on experience with essential data science libraries like NumPy for numerical computation and Pandas for data manipulation and analysis.",
+        "Learn how to work with real-world data by fetching and processing information from various APIs to use in your applications."
+      ]
     },
     {
       "id": 103,
@@ -105,7 +122,21 @@
       "difficulty": "Intermediate",
       "durationText": "4 months",
       "status": "Published",
-      "publishedDate": "2025-02-01T00:00:00.000Z"
+      "publishedDate": "2025-02-01T00:00:00.000Z",
+      "skills": [
+        "Data Analysis",
+        "SQL",
+        "Data Visualization",
+        "R Programming",
+        "Tableau",
+        "Statistical Analysis",
+        "Dashboarding"
+      ],
+      "whatYoullLearn": [
+        "Dive deep into advanced analytical techniques using SQL and R to uncover complex patterns and insights from your data.",
+        "Become proficient in creating compelling and interactive data visualizations and dashboards using Tableau to communicate your findings effectively.",
+        "Complete a comprehensive capstone project that allows you to apply your advanced analytics and visualization skills to a real-world business problem."
+      ]
     },
     {
       "id": 104,
@@ -123,7 +154,21 @@
       "difficulty": "Beginner",
       "durationText": "3 months",
       "status": "Published",
-      "publishedDate": "2024-11-20T00:00:00.000Z"
+      "publishedDate": "2024-11-20T00:00:00.000Z",
+      "skills": [
+        "Python",
+        "Big Data",
+        "Hadoop",
+        "HDFS",
+        "MapReduce",
+        "Apache Spark",
+        "Data Processing"
+      ],
+      "whatYoullLearn": [
+        "Understand the core concepts of Big Data and the challenges and opportunities it presents in the modern data landscape.",
+        "Explore the Hadoop ecosystem and learn the fundamentals of the Hadoop Distributed File System (HDFS) for storing large datasets.",
+        "Grasp the principles of distributed data processing with MapReduce and get an introduction to the power and speed of Apache Spark."
+      ]
     },
     {
       "id": 105,
@@ -141,7 +186,21 @@
       "difficulty": "Intermediate",
       "durationText": "5 months",
       "status": "Published",
-      "publishedDate": "2025-01-15T00:00:00.000Z"
+      "publishedDate": "2025-01-15T00:00:00.000Z",
+      "skills": [
+        "Python",
+        "Machine Learning",
+        "AI Ethics",
+        "Scikit-learn",
+        "ML Pipelines",
+        "Model Deployment",
+        "Statistical Analysis"
+      ],
+      "whatYoullLearn": [
+        "Build a strong understanding of fundamental machine learning concepts, including supervised and unsupervised learning techniques.",
+        "Learn to use the powerful Scikit-learn library in Python to build, train, and evaluate various machine learning models.",
+        "Master the end-to-end machine learning workflow, from creating efficient data pipelines to the basics of deploying models into production."
+      ]
     },
     {
       "id": 106,
@@ -159,7 +218,19 @@
       "difficulty": "Advanced",
       "durationText": "8 weeks",
       "status": "Published",
-      "publishedDate": "2025-03-01T00:00:00.000Z"
+      "publishedDate": "2025-03-01T00:00:00.000Z",
+      "skills": [
+        "Python",
+        "Advanced Python",
+        "Concurrency",
+        "Asyncio",
+        "Design Patterns"
+      ],
+      "whatYoullLearn": [
+        "Elevate your Python skills by mastering advanced concepts such as decorators, generators, and context managers for writing more elegant and efficient code.",
+        "Learn how to implement static typing in your Python projects to catch errors early and improve code maintainability.",
+        "Explore the world of concurrent programming with asyncio to build high-performance, scalable applications that can handle multiple tasks simultaneously."
+      ]
     },
     {
       "id": 107,
@@ -177,7 +248,20 @@
       "difficulty": "Beginner",
       "durationText": "6 weeks",
       "status": "Published",
-      "publishedDate": "2024-12-10T00:00:00.000Z"
+      "publishedDate": "2024-12-10T00:00:00.000Z",
+      "skills": [
+        "SQL",
+        "Data Analysis",
+        "Database Querying",
+        "Window Functions",
+        "Joins",
+        "Aggregations"
+      ],
+      "whatYoullLearn": [
+        "Develop a strong foundation in SQL, starting from basic SELECT statements and progressing to complex queries for in-depth data analysis.",
+        "Master essential SQL techniques such as joining multiple tables and performing powerful aggregations to summarize and analyze your data.",
+        "Unlock advanced analytical capabilities by learning how to use powerful window functions to perform complex calculations across sets of rows."
+      ]
     },
     {
       "id": 108,
@@ -195,7 +279,20 @@
       "difficulty": "Intermediate",
       "durationText": "5 weeks",
       "status": "Published",
-      "publishedDate": "2025-04-05T00:00:00.000Z"
+      "publishedDate": "2025-04-05T00:00:00.000Z",
+      "skills": [
+        "Prompt Engineering",
+        "Machine Learning",
+        "AI Ethics",
+        "APIs",
+        "Generative AI",
+        "Large Language Models (LLMs)"
+      ],
+      "whatYoullLearn": [
+        "Gain a deep understanding of how Large Language Models (LLMs) work and their transformative potential across various industries.",
+        "Master the art and science of prompt engineering, learning various patterns and techniques to craft effective prompts that elicit desired responses from AI models.",
+        "Explore the critical ethical considerations surrounding generative AI and learn how to develop and deploy these powerful technologies responsibly."
+      ]
     }
   ],
   "curriculum": [
@@ -204,7 +301,7 @@
       "sections": [
         {
           "id": 201,
-          "title": "Section 1: Introduction",
+          "title": "Section 1: Foundations of Data Analytics",
           "lectures": [
             {
               "id": 301,
@@ -212,40 +309,496 @@
               "type": "Text",
               "durationMinutes": 3,
               "content": {
-                "htmlContent": "<h1>Welcome!</h1>"
+                "htmlContent": "<h1>Welcome to Google Data Analytics Course-1!</h1><p>This course will provide you with the foundational skills for a career in data analytics.</p>"
               }
             },
             {
               "id": 302,
-              "title": "Google Analytics Overview",
+              "title": "Introduction to Data Ecosystems",
               "type": "Video",
-              "durationMinutes": 8,
+              "durationMinutes": 12,
               "content": {
-                "videoUrl": "path/to/video1.mp4"
+                "videoUrl": "path/to/video_101_1.mp4"
               }
             },
             {
               "id": 303,
-              "title": "Setup Demo Account",
+              "title": "Core Concepts of Prompt Engineering",
               "type": "Video",
-              "durationMinutes": 6,
+              "durationMinutes": 15,
               "content": {
-                "videoUrl": "path/to/video2.mp4"
+                "videoUrl": "path/to/video_101_2.mp4"
               }
             },
             {
               "id": 304,
-              "title": "Top 50 Terms (PDF)",
+              "title": "Data Analytics Terminology (PDF)",
               "type": "PDF",
               "durationMinutes": 10,
               "content": {
-                "fileUrl": "path/to/dictionary.pdf"
+                "fileUrl": "path/to/terms_101.pdf"
+              }
+            }
+          ]
+        },
+        {
+          "id": 202,
+          "title": "Section 2: Working with Spreadsheets",
+          "lectures": [
+            {
+              "id": 305,
+              "title": "Excel Basics for Data Analysis",
+              "type": "Video",
+              "durationMinutes": 20,
+              "content": {
+                "videoUrl": "path/to/video_101_3.mp4"
+              }
+            },
+            {
+              "id": 306,
+              "title": "Formulas and Functions",
+              "type": "Video",
+              "durationMinutes": 25,
+              "content": {
+                "videoUrl": "path/to/video_101_4.mp4"
+              }
+            },
+            {
+              "id": 307,
+              "title": "Quiz: Spreadsheet Fundamentals",
+              "type": "Quiz",
+              "durationMinutes": 15,
+              "content": {
+                "quizId": "q_101_1"
               }
             }
           ]
         }
       ],
       "id": "b340"
+    },
+    {
+      "courseId": 102,
+      "sections": [
+        {
+          "id": 203,
+          "title": "Section 1: Python Fundamentals",
+          "lectures": [
+            {
+              "id": 308,
+              "title": "Introduction to Python for Data Science",
+              "type": "Video",
+              "durationMinutes": 10,
+              "content": {
+                "videoUrl": "path/to/video_102_1.mp4"
+              }
+            },
+            {
+              "id": 309,
+              "title": "Data Types and Variables",
+              "type": "Video",
+              "durationMinutes": 18,
+              "content": {
+                "videoUrl": "path/to/video_102_2.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 204,
+          "title": "Section 2: Core Libraries - NumPy and Pandas",
+          "lectures": [
+            {
+              "id": 310,
+              "title": "Working with NumPy Arrays",
+              "type": "Video",
+              "durationMinutes": 22,
+              "content": {
+                "videoUrl": "path/to/video_102_3.mp4"
+              }
+            },
+            {
+              "id": 311,
+              "title": "Data Manipulation with Pandas",
+              "type": "Video",
+              "durationMinutes": 30,
+              "content": {
+                "videoUrl": "path/to/video_102_4.mp4"
+              }
+            },
+            {
+              "id": 312,
+              "title": "Working with APIs in Python",
+              "type": "Video",
+              "durationMinutes": 25,
+              "content": {
+                "videoUrl": "path/to/video_102_5.mp4"
+              }
+            }
+          ]
+        }
+      ],
+      "id": "c451"
+    },
+    {
+      "courseId": 103,
+      "sections": [
+        {
+          "id": 205,
+          "title": "Section 1: Advanced Data Analysis Techniques",
+          "lectures": [
+            {
+              "id": 313,
+              "title": "Advanced SQL for Analytics",
+              "type": "Video",
+              "durationMinutes": 28,
+              "content": {
+                "videoUrl": "path/to/video_103_1.mp4"
+              }
+            },
+            {
+              "id": 314,
+              "title": "Introduction to R for Statistical Computing",
+              "type": "Video",
+              "durationMinutes": 35,
+              "content": {
+                "videoUrl": "path/to/video_103_2.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 206,
+          "title": "Section 2: Data Visualization and Dashboards",
+          "lectures": [
+            {
+              "id": 315,
+              "title": "Building Interactive Dashboards with Tableau",
+              "type": "Video",
+              "durationMinutes": 40,
+              "content": {
+                "videoUrl": "path/to/video_103_3.mp4"
+              }
+            },
+            {
+              "id": 316,
+              "title": "Capstone Project: Analytics in Action",
+              "type": "Text",
+              "durationMinutes": 120,
+              "content": {
+                "htmlContent": "<h1>Capstone Project</h1><p>Apply your skills to a real-world dataset. Project details are in the attached PDF.</p>"
+              }
+            }
+          ]
+        }
+      ],
+      "id": "d562"
+    },
+    {
+      "courseId": 104,
+      "sections": [
+        {
+          "id": 207,
+          "title": "Section 1: Introduction to Big Data",
+          "lectures": [
+            {
+              "id": 317,
+              "title": "What is Big Data?",
+              "type": "Video",
+              "durationMinutes": 15,
+              "content": {
+                "videoUrl": "path/to/video_104_1.mp4"
+              }
+            },
+            {
+              "id": 318,
+              "title": "The Hadoop Ecosystem",
+              "type": "Video",
+              "durationMinutes": 20,
+              "content": {
+                "videoUrl": "path/to/video_104_2.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 208,
+          "title": "Section 2: Core Technologies",
+          "lectures": [
+            {
+              "id": 319,
+              "title": "Understanding HDFS",
+              "type": "Video",
+              "durationMinutes": 25,
+              "content": {
+                "videoUrl": "path/to/video_104_3.mp4"
+              }
+            },
+            {
+              "id": 320,
+              "title": "MapReduce Fundamentals",
+              "type": "Video",
+              "durationMinutes": 30,
+              "content": {
+                "videoUrl": "path/to/video_104_4.mp4"
+              }
+            },
+            {
+              "id": 321,
+              "title": "Introduction to Apache Spark",
+              "type": "Video",
+              "durationMinutes": 35,
+              "content": {
+                "videoUrl": "path/to/video_104_5.mp4"
+              }
+            }
+          ]
+        }
+      ],
+      "id": "e673"
+    },
+    {
+      "courseId": 105,
+      "sections": [
+        {
+          "id": 209,
+          "title": "Section 1: Machine Learning Fundamentals",
+          "lectures": [
+            {
+              "id": 322,
+              "title": "Types of Machine Learning",
+              "type": "Video",
+              "durationMinutes": 18,
+              "content": {
+                "videoUrl": "path/to/video_105_1.mp4"
+              }
+            },
+            {
+              "id": 323,
+              "title": "Introduction to Scikit-learn",
+              "type": "Video",
+              "durationMinutes": 22,
+              "content": {
+                "videoUrl": "path/to/video_105_2.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 210,
+          "title": "Section 2: Building and Deploying Models",
+          "lectures": [
+            {
+              "id": 324,
+              "title": "Creating ML Pipelines",
+              "type": "Video",
+              "durationMinutes": 30,
+              "content": {
+                "videoUrl": "path/to/video_105_3.mp4"
+              }
+            },
+            {
+              "id": 325,
+              "title": "Model Evaluation and Tuning",
+              "type": "Video",
+              "durationMinutes": 28,
+              "content": {
+                "videoUrl": "path/to/video_105_4.mp4"
+              }
+            },
+            {
+              "id": 326,
+              "title": "Basics of Model Deployment",
+              "type": "Video",
+              "durationMinutes": 25,
+              "content": {
+                "videoUrl": "path/to/video_105_5.mp4"
+              }
+            }
+          ]
+        }
+      ],
+      "id": "f784"
+    },
+    {
+      "courseId": 106,
+      "sections": [
+        {
+          "id": 211,
+          "title": "Section 1: Advanced Python Concepts",
+          "lectures": [
+            {
+              "id": 327,
+              "title": "Decorators and Generators",
+              "type": "Video",
+              "durationMinutes": 25,
+              "content": {
+                "videoUrl": "path/to/video_106_1.mp4"
+              }
+            },
+            {
+              "id": 328,
+              "title": "Static Typing with Mypy",
+              "type": "Video",
+              "durationMinutes": 20,
+              "content": {
+                "videoUrl": "path/to/video_106_2.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 212,
+          "title": "Section 2: Concurrency and Design Patterns",
+          "lectures": [
+            {
+              "id": 329,
+              "title": "Concurrency with Asyncio",
+              "type": "Video",
+              "durationMinutes": 35,
+              "content": {
+                "videoUrl": "path/to/video_106_3.mp4"
+              }
+            },
+            {
+              "id": 330,
+              "title": "Common Design Patterns in Python",
+              "type": "Video",
+              "durationMinutes": 30,
+              "content": {
+                "videoUrl": "path/to/video_106_4.mp4"
+              }
+            }
+          ]
+        }
+      ],
+      "id": "g895"
+    },
+    {
+      "courseId": 107,
+      "sections": [
+        {
+          "id": 213,
+          "title": "Section 1: SQL Fundamentals",
+          "lectures": [
+            {
+              "id": 331,
+              "title": "Writing Your First SELECT Statement",
+              "type": "Video",
+              "durationMinutes": 15,
+              "content": {
+                "videoUrl": "path/to/video_107_1.mp4"
+              }
+            },
+            {
+              "id": 332,
+              "title": "Filtering Data with WHERE",
+              "type": "Video",
+              "durationMinutes": 18,
+              "content": {
+                "videoUrl": "path/to/video_107_2.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 214,
+          "title": "Section 2: Advanced SQL Queries",
+          "lectures": [
+            {
+              "id": 333,
+              "title": "Joining Multiple Tables",
+              "type": "Video",
+              "durationMinutes": 25,
+              "content": {
+                "videoUrl": "path/to/video_107_3.mp4"
+              }
+            },
+            {
+              "id": 334,
+              "title": "Aggregations with GROUP BY",
+              "type": "Video",
+              "durationMinutes": 22,
+              "content": {
+                "videoUrl": "path/to/video_107_4.mp4"
+              }
+            },
+            {
+              "id": 335,
+              "title": "Mastering Window Functions",
+              "type": "Video",
+              "durationMinutes": 30,
+              "content": {
+                "videoUrl": "path/to/video_107_5.mp4"
+              }
+            }
+          ]
+        }
+      ],
+      "id": "h906"
+    },
+    {
+      "courseId": 108,
+      "sections": [
+        {
+          "id": 215,
+          "title": "Section 1: Introduction to Generative AI",
+          "lectures": [
+            {
+              "id": 336,
+              "title": "What are Large Language Models (LLMs)?",
+              "type": "Video",
+              "durationMinutes": 15,
+              "content": {
+                "videoUrl": "path/to/video_108_1.mp4"
+              }
+            },
+            {
+              "id": 337,
+              "title": "The Art of the Prompt",
+              "type": "Video",
+              "durationMinutes": 20,
+              "content": {
+                "videoUrl": "path/to/video_108_2.mp4"
+              }
+            }
+          ]
+        },
+        {
+          "id": 216,
+          "title": "Section 2: Advanced Prompt Engineering",
+          "lectures": [
+            {
+              "id": 338,
+              "title": "Prompt Patterns and Techniques",
+              "type": "Video",
+              "durationMinutes": 28,
+              "content": {
+                "videoUrl": "path/to/video_108_3.mp4"
+              }
+            },
+            {
+              "id": 339,
+              "title": "Ethical Considerations in GenAI",
+              "type": "Video",
+              "durationMinutes": 22,
+              "content": {
+                "videoUrl": "path/to/video_108_4.mp4"
+              }
+            },
+            {
+              "id": 340,
+              "title": "Final Project: Build a Prompt-Based Application",
+              "type": "Text",
+              "durationMinutes": 90,
+              "content": {
+                "htmlContent": "<h1>Final Project</h1><p>Design and document a series of prompts for a specific business use case.</p>"
+              }
+            }
+          ]
+        }
+      ],
+      "id": "i017"
     }
   ],
   "quizzes": [
@@ -278,20 +831,118 @@
       "id": "3237"
     }
   ],
-  "reviews": [
+  "testimonials": [
     {
       "courseId": 101,
       "userId": 3,
       "rating": 4.8,
-      "comment": "Pivotal for my career.",
+      "comment": "This course was a fantastic starting point for my data analytics journey. The content is very well structured and easy to follow.",
       "id": "760b"
     },
     {
       "courseId": 101,
       "userId": 4,
       "rating": 4.7,
-      "comment": "Well structured curriculum.",
+      "comment": "Pivotal for my career. The practical skills I learned in Excel and prompt engineering were immediately applicable to my job.",
       "id": "8dbc"
+    },
+    {
+      "courseId": 102,
+      "userId": 5,
+      "rating": 4.6,
+      "comment": "A comprehensive introduction to Python for data science. The hands-on labs with NumPy and Pandas were incredibly helpful.",
+      "id": "9efd"
+    },
+    {
+      "courseId": 102,
+      "userId": 6,
+      "rating": 4.5,
+      "comment": "Great course from IBM! I feel much more confident in my Python skills now.",
+      "id": "a123"
+    },
+    {
+      "courseId": 103,
+      "userId": 7,
+      "rating": 4.9,
+      "comment": "Took my data analysis skills to the next level. The section on Tableau was a game-changer for my presentations.",
+      "id": "b456"
+    },
+    {
+      "courseId": 103,
+      "userId": 8,
+      "rating": 4.7,
+      "comment": "The capstone project was challenging but very rewarding. Highly recommend this for anyone serious about data analytics.",
+      "id": "c789"
+    },
+    {
+      "courseId": 104,
+      "userId": 9,
+      "rating": 4.4,
+      "comment": "A solid introduction to the world of big data. The concepts of HDFS and MapReduce were explained very clearly.",
+      "id": "d012"
+    },
+    {
+      "courseId": 104,
+      "userId": 10,
+      "rating": 4.5,
+      "comment": "I finally understand what Spark is and how it works. Great for beginners in the big data space.",
+      "id": "e345"
+    },
+    {
+      "courseId": 105,
+      "userId": 11,
+      "rating": 4.7,
+      "comment": "This course demystified machine learning for me. The practical approach with Scikit-learn was perfect.",
+      "id": "f678"
+    },
+    {
+      "courseId": 105,
+      "userId": 12,
+      "rating": 4.8,
+      "comment": "From building pipelines to deployment, this course covers the entire ML workflow. Excellent content!",
+      "id": "g901"
+    },
+    {
+      "courseId": 106,
+      "userId": 13,
+      "rating": 4.6,
+      "comment": "If you want to go beyond the basics of Python, this is the course for you. The section on asyncio was particularly insightful.",
+      "id": "h234"
+    },
+    {
+      "courseId": 106,
+      "userId": 14,
+      "rating": 4.7,
+      "comment": "Advanced topics explained in a very accessible way. My Python code is much more efficient now.",
+      "id": "i567"
+    },
+    {
+      "courseId": 107,
+      "userId": 15,
+      "rating": 4.5,
+      "comment": "My SQL skills have improved dramatically. The lessons on window functions were exactly what I needed.",
+      "id": "j890"
+    },
+    {
+      "courseId": 107,
+      "userId": 16,
+      "rating": 4.6,
+      "comment": "A must-do course for anyone who works with data. The query examples were very practical and useful.",
+      "id": "k123"
+    },
+    {
+      "courseId": 108,
+      "userId": 17,
+      "rating": 4.9,
+      "comment": "Mind-blowing course! Prompt engineering is a skill of the future, and this course is the best way to learn it.",
+      "id": "l456"
+    },
+    {
+      "courseId": 108,
+      "userId": 18,
+      "rating": 4.8,
+      "comment": "The insights into how LLMs work and how to craft effective prompts are invaluable. Highly recommended!",
+      "id": "m789"
     }
   ],
   "enrollments": [

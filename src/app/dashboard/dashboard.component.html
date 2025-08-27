@@ -2,7 +2,7 @@
 
 <main class="dash">
   <div class="container-xxl py-4">
-   <section class="banner card mb-4">
+    <section class="banner card mb-4">
       <div class="banner-inner">
         <div class="text">Welcome to LearnHub</div>
         <div class="bar"><span></span></div>
@@ -43,22 +43,15 @@
           <button class="nav-btn" (click)="scrollRail('last', 1)" aria-label="scroll right">›</button>
         </div>
       </div>
-      <div
-        #railLast
-        class="rail-body h-scroll glider"
-        (wheel)="onWheel($event, 'last')">
+      <div #railLast class="rail-body h-scroll glider" (wheel)="onWheel($event, 'last')">
         @for (item of lastViewed; track item.course.id) {
-          <app-course-card class="me-3"
-            [thumbnailUrl]="item.course.thumbnailUrl"
-            [title]="item.course.title"
-            [provider]="item.course.provider.name"
-            [rating]="item.course.rating"
-            [reviewCount]="item.course.reviewCount"
-            [enrollmentCount]="item.course.enrollmentCount"
-            [difficulty]="item.course.difficulty"
-            [durationText]="item.course.durationText"
-            [progressPercent]="item.progressPercent">
+        <a class="no-decoration me-3" [routerLink]="['/courses', item.course.id]">
+          <app-course-card [thumbnailUrl]="item.course.thumbnailUrl" [title]="item.course.title"
+            [provider]="item.course.provider.name" [rating]="item.course.rating" [reviewCount]="item.course.reviewCount"
+            [enrollmentCount]="item.course.enrollmentCount" [difficulty]="item.course.difficulty"
+            [durationText]="item.course.durationText" [progressPercent]="item.progressPercent">
           </app-course-card>
+        </a>
         }
       </div>
     </section>
@@ -72,24 +65,17 @@
           <button class="nav-btn" (click)="scrollRail('new', 1)" aria-label="scroll right">›</button>
         </div>
       </div>
-      <div
-        #railNew
-        class="rail-body h-scroll glider"
-        (wheel)="onWheel($event, 'new')">
+      <div #railNew class="rail-body h-scroll glider" (wheel)="onWheel($event, 'new')">
         @for (c of newlyLaunched; track c.id) {
-          <app-course-card class="me-3"
-            [thumbnailUrl]="c.thumbnailUrl"
-            [title]="c.title"
-            [provider]="c.provider.name"
-            [rating]="c.rating"
-            [reviewCount]="c.reviewCount"
-            [enrollmentCount]="c.enrollmentCount"
-            [difficulty]="c.difficulty"
-            [durationText]="c.durationText"
-            badgeText="New Launch">
+        <a class="no-decoration me-3" [routerLink]="['/courses', c.id]">
+          <app-course-card [thumbnailUrl]="c.thumbnailUrl" [title]="c.title" [provider]="c.provider.name"
+            [rating]="c.rating" [reviewCount]="c.reviewCount" [enrollmentCount]="c.enrollmentCount"
+            [difficulty]="c.difficulty" [durationText]="c.durationText" badgeText="New Launch">
           </app-course-card>
+        </a>
         }
       </div>
+
     </section>
   </div>
 </main>
