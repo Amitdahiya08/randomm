@@ -1,0 +1,354 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "username": "hshimron",
+      "email": "harry.shimron@example.com",
+      "password": "Pass@123",
+      "fullName": "Harry Shimron",
+      "track": "DC Software Engineer II",
+      "avatarUrl": "https://i.pravatar.cc/150?u=hshimron",
+      "joinDate": "2021-08-14T00:00:00.000Z",
+      "role": "Admin",
+      "bio": "Passionate writer and avid traveler...",
+      "location": "Bangalore, India"
+    },
+    {
+      "id": "2",
+      "username": "smaarek",
+      "email": "stephane.maarek@example.com",
+      "password": "Pass@123",
+      "fullName": "Stephane Maarek",
+      "track": "AWS Certified Cloud Practitioner",
+      "avatarUrl": "https://i.pravatar.cc/150?u=smaarek",
+      "joinDate": "2020-05-20T00:00:00.000Z",
+      "role": "Author",
+      "bio": "Solutions architect and developer...",
+      "location": "New York, USA"
+    },
+    {
+      "id": "fa11",
+      "fullName": "ABC",
+      "username": "abc",
+      "email": "abc@gmail.com",
+      "password": "abc123",
+      "role": "Learner",
+      "avatarUrl": "https://i.pravatar.cc/150?u=abc",
+      "joinDate": "2025-08-27T17:13:11.830Z"
+    }
+  ],
+  "courses": [
+    {
+      "id": "101",
+      "title": "Google Data Analytics Course-1",
+      "subtitle": "Become a Prompt Engineering Expert...",
+      "authorId": 2,
+      "provider": {
+        "name": "Google",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1024px-Google_%22G%22_logo.svg.png"
+      },
+      "thumbnailUrl": "https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "rating": 4.8,
+      "reviewCount": 1278,
+      "enrollmentCount": 45908,
+      "difficulty": "Beginner",
+      "durationText": "05 Weeks",
+      "skills": [
+        "Prompt Engineering",
+        "MS Excel",
+        "Data Ethics",
+        "Document Management",
+        "Data Analysis"
+      ],
+      "whatYoullLearn": [
+        "Gain an immersive understanding of analyst workflows.",
+        "Learn spreadsheets, SQL, R, Tableau.",
+        "Clean and organize data for analysis."
+      ],
+      "requirements": [
+        "No experience required."
+      ],
+      "status": "Published",
+      "publishedDate": "2023-05-20T00:00:00.000Z"
+    },
+    {
+      "id": 102,
+      "title": "Python for Data Science, AI & Development",
+      "subtitle": "Hands-on Python, NumPy, Pandas, and APIs.",
+      "authorId": 2,
+      "provider": {
+        "name": "IBM",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/2560px-IBM_logo.svg.png"
+      },
+      "thumbnailUrl": "https://images.pexels.com/photos/5775854/pexels-photo-5775854.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "rating": 4.5,
+      "reviewCount": 133000,
+      "enrollmentCount": 635000,
+      "difficulty": "Beginner",
+      "durationText": "6 months",
+      "status": "Published",
+      "publishedDate": "2024-06-12T00:00:00.000Z"
+    },
+    {
+      "id": 103,
+      "title": "Google Data Analytics Course-2",
+      "subtitle": "Advanced analytics and dashboards.",
+      "authorId": 2,
+      "provider": {
+        "name": "Google",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1024px-Google_%22G%22_logo.svg.png"
+      },
+      "thumbnailUrl": "https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "rating": 4.6,
+      "reviewCount": 88000,
+      "enrollmentCount": 320000,
+      "difficulty": "Intermediate",
+      "durationText": "4 months",
+      "status": "Published",
+      "publishedDate": "2025-02-01T00:00:00.000Z"
+    },
+    {
+      "id": 104,
+      "title": "Big Data Essentials",
+      "subtitle": "HDFS, MapReduce, Spark basics.",
+      "authorId": 2,
+      "provider": {
+        "name": "LinkedIn Learning",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/2560px-LinkedIn_Logo.svg.png"
+      },
+      "thumbnailUrl": "https://images.pexels.com/photos/1148820/pexels-photo-1148820.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "rating": 4.4,
+      "reviewCount": 56000,
+      "enrollmentCount": 210000,
+      "difficulty": "Beginner",
+      "durationText": "3 months",
+      "status": "Published",
+      "publishedDate": "2024-11-20T00:00:00.000Z"
+    },
+    {
+      "id": 105,
+      "title": "Modern Machine Learning with Python",
+      "subtitle": "Scikit-learn pipelines to deployment.",
+      "authorId": 2,
+      "provider": {
+        "name": "Coursera",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Coursera_logo.svg/2560px-Coursera_logo.svg.png"
+      },
+      "thumbnailUrl": "https://images.pexels.com/photos/8386440/pexels-photo-8386440.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "rating": 4.7,
+      "reviewCount": 99000,
+      "enrollmentCount": 410000,
+      "difficulty": "Intermediate",
+      "durationText": "5 months",
+      "status": "Published",
+      "publishedDate": "2025-01-15T00:00:00.000Z"
+    },
+    {
+      "id": 106,
+      "title": "Advanced Python Programming",
+      "subtitle": "Typing, concurrency, asyncio, patterns.",
+      "authorId": 2,
+      "provider": {
+        "name": "Udemy",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/Udemy_logo.svg/2560px-Udemy_logo.svg.png"
+      },
+      "thumbnailUrl": "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "rating": 4.6,
+      "reviewCount": 45000,
+      "enrollmentCount": 150000,
+      "difficulty": "Advanced",
+      "durationText": "8 weeks",
+      "status": "Published",
+      "publishedDate": "2025-03-01T00:00:00.000Z"
+    },
+    {
+      "id": 107,
+      "title": "SQL for Data Analysis",
+      "subtitle": "From SELECT to window functions.",
+      "authorId": 2,
+      "provider": {
+        "name": "Mode",
+        "logoUrl": "https://images.g2crowd.com/uploads/product/image/social_landscape/social_landscape_4b77f6204a238605c277716940656e1b/mode-analytics.png"
+      },
+      "thumbnailUrl": "https://images.pexels.com/photos/276452/pexels-photo-276452.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "rating": 4.5,
+      "reviewCount": 72000,
+      "enrollmentCount": 280000,
+      "difficulty": "Beginner",
+      "durationText": "6 weeks",
+      "status": "Published",
+      "publishedDate": "2024-12-10T00:00:00.000Z"
+    },
+    {
+      "id": 108,
+      "title": "Generative AI: Prompt Engineering",
+      "subtitle": "Patterns and techniques for LLMs.",
+      "authorId": 2,
+      "provider": {
+        "name": "DeepLearning.AI",
+        "logoUrl": "https://cdn.worldvectorlogo.com/logos/deeplearning-ai.svg"
+      },
+      "thumbnailUrl": "https://images.pexels.com/photos/15690333/pexels-photo-15690333/free-photo-of-close-up-of-a-robot.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "rating": 4.8,
+      "reviewCount": 110000,
+      "enrollmentCount": 500000,
+      "difficulty": "Intermediate",
+      "durationText": "5 weeks",
+      "status": "Published",
+      "publishedDate": "2025-04-05T00:00:00.000Z"
+    }
+  ],
+  "curriculum": [
+    {
+      "courseId": 101,
+      "sections": [
+        {
+          "id": 201,
+          "title": "Section 1: Introduction",
+          "lectures": [
+            {
+              "id": 301,
+              "title": "Course Overview",
+              "type": "Text",
+              "durationMinutes": 3,
+              "content": {
+                "htmlContent": "<h1>Welcome!</h1>"
+              }
+            },
+            {
+              "id": 302,
+              "title": "Google Analytics Overview",
+              "type": "Video",
+              "durationMinutes": 8,
+              "content": {
+                "videoUrl": "path/to/video1.mp4"
+              }
+            },
+            {
+              "id": 303,
+              "title": "Setup Demo Account",
+              "type": "Video",
+              "durationMinutes": 6,
+              "content": {
+                "videoUrl": "path/to/video2.mp4"
+              }
+            },
+            {
+              "id": 304,
+              "title": "Top 50 Terms (PDF)",
+              "type": "PDF",
+              "durationMinutes": 10,
+              "content": {
+                "fileUrl": "path/to/dictionary.pdf"
+              }
+            }
+          ]
+        }
+      ],
+      "id": "b340"
+    }
+  ],
+  "quizzes": [
+    {
+      "courseId": 101,
+      "items": [
+        {
+          "id": 401,
+          "questionText": "In data analytics, noise is ____.",
+          "options": [
+            {
+              "text": "fields necessary for reporting",
+              "isCorrect": false
+            },
+            {
+              "text": "fields and data types",
+              "isCorrect": false
+            },
+            {
+              "text": "data that is not meaningful for reporting",
+              "isCorrect": true
+            },
+            {
+              "text": "timing and calculations",
+              "isCorrect": false
+            }
+          ]
+        }
+      ],
+      "id": "3237"
+    }
+  ],
+  "reviews": [
+    {
+      "courseId": 101,
+      "userId": 3,
+      "rating": 4.8,
+      "comment": "Pivotal for my career.",
+      "id": "760b"
+    },
+    {
+      "courseId": 101,
+      "userId": 4,
+      "rating": 4.7,
+      "comment": "Well structured curriculum.",
+      "id": "8dbc"
+    }
+  ],
+  "enrollments": [
+    {
+      "id": "1",
+      "userId": 1,
+      "courseId": 101,
+      "progressPercent": 21
+    },
+    {
+      "id": "2",
+      "userId": 1,
+      "courseId": 103,
+      "progressPercent": 10
+    },
+    {
+      "id": "3",
+      "userId": 1,
+      "courseId": 104,
+      "progressPercent": 80
+    },
+    {
+      "id": "4",
+      "userId": 3,
+      "courseId": 101,
+      "progressPercent": 100
+    },
+    {
+      "id": "5",
+      "userId": 3,
+      "courseId": 102,
+      "progressPercent": 50
+    },
+    {
+      "id": "6",
+      "userId": 4,
+      "courseId": 101,
+      "progressPercent": 100
+    }
+  ],
+  "banners": [
+    {
+      "id": "501",
+      "imageUrl": "https://i.imgur.com/your-banner-1.png",
+      "status": "active"
+    },
+    {
+      "id": "502",
+      "imageUrl": "https://i.imgur.com/your-banner-2.png",
+      "status": "scheduled",
+      "scheduleDate": "2024-12-01T00:00:00.000Z",
+      "expiryDate": "2024-12-25T23:59:59.000Z"
+    },
+    {
+      "id": "503",
+      "imageUrl": "https://i.imgur.com/your-banner-3.png",
+      "status": "inactive"
+    }
+  ]
+}

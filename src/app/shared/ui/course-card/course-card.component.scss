@@ -1,0 +1,77 @@
+.card-wrap {
+    width: 280px;
+    background: var(--surface);
+    color: var(--text);
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform .2s ease, box-shadow .2s ease;
+
+    &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 28px rgba(0, 0, 0, .45);
+    }
+
+    .thumb {
+        position: relative;
+        height: 160px;
+        background: #0b1118;
+    }
+
+    img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .progress-tag,
+    .badge {
+        position: absolute;
+        top: 10px;
+        padding: 2px 8px;
+        font-size: .75rem;
+        border-radius: 999px;
+        font-weight: 600;
+    }
+
+    .progress-tag {
+        left: 10px;
+        background: var(--brand);
+        color: #07230f;
+    }
+
+    .badge {
+        right: 10px;
+        background: #00b7ff;
+        color: #06131b;
+    }
+
+    .meta {
+        padding: 12px 14px;
+    }
+
+    .title {
+        font-weight: 700;
+        line-height: 1.2;
+        min-height: 40px;
+    }
+
+    .provider {
+        color: var(--muted);
+    }
+
+    .stats {
+        margin-top: 6px;
+        color: #d7e5f7;
+        opacity: .95;
+    }
+
+    .stats span {
+        margin-right: 6px;
+    }
+
+    .meta2 {
+        margin-top: 4px;
+        color: var(--muted);
+    }
+}

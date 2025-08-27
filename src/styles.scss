@@ -1,0 +1,54 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* ===== Design tokens ===== */
+:root {
+    --bg: #0c1116;
+    --surface: #121922;
+    --surface-2: #151e28;
+    --surface-3: #1b2531;
+    --text: #e6eef7;
+    --muted: #9fb2c7;
+    --brand: #18c074;
+    --brand-2: #00e091;
+    --accent: #00b7ff;
+    --danger: #ff6b6b;
+    --card-radius: 16px;
+    --shadow: 0 6px 18px rgba(0, 0, 0, .35);
+    --rail-gap: 16px;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+/* Subtle scrollbars for rails */
+.h-scroll::-webkit-scrollbar {
+    height: 10px;
+}
+
+.h-scroll::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.h-scroll::-webkit-scrollbar-thumb {
+    background: #2a3542;
+    border-radius: 999px;
+}
+
+/* Utility */
+.container-xxl {
+    max-width: 1320px;
+}
+
+/* Material fill fields in dark panel */
+.mdc-text-field--filled {
+    --mdc-filled-text-field-container-color: var(--surface-2);
+}

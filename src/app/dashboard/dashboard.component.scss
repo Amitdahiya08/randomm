@@ -1,0 +1,158 @@
+:host {
+    display: block;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid #1b2a38;
+    border-radius: var(--card-radius);
+    box-shadow: var(--shadow);
+}
+
+
+/* Banner */
+.banner {
+    background: linear-gradient(90deg, #0aa85f 0%, #18c074 40%, #11d08f 100%);
+    border: 0;
+
+    .banner-inner {
+        padding: 18px 20px;
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--card-radius);
+
+        &:before,
+        &:after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                linear-gradient(135deg, #0cc37022 25%, transparent 25%) left,
+                linear-gradient(315deg, #0cc37022 25%, transparent 25%) right;
+            background-size: 50% 100%;
+            mix-blend-mode: overlay;
+        }
+
+        .text {
+            text-align: center;
+            font-weight: 900;
+            letter-spacing: .15rem;
+            color: #062313;
+            font-size: 1.25rem;
+        }
+
+        .bar {
+            height: 6px;
+            background: #0fb86b;
+            border-radius: 999px;
+            margin-top: 10px;
+        }
+
+        .bar span {
+            display: block;
+            height: 100%;
+            width: 38%;
+            background: #d2ffe9;
+            border-radius: 999px;
+        }
+    }
+}
+
+/* Rails */
+.rail {
+    .rail-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 10px;
+
+        .rail-controls {
+            display: flex;
+            gap: 8px;
+
+            .nav-btn {
+                width: 34px;
+                height: 34px;
+                border-radius: 50%;
+                border: 1px solid #2a3b4e;
+                background: #17212b;
+                color: #cfe7ff;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 18px;
+                line-height: 1;
+                cursor: pointer;
+            }
+
+            .nav-btn:hover {
+                background: #1f2c39;
+            }
+        }
+    }
+
+    h5 {
+        margin: 0;
+        font-weight: 800;
+    }
+
+    .rail-body {
+        display: flex;
+        gap: var(--rail-gap);
+        padding-bottom: 8px;
+    }
+}
+
+/* Stats */
+.stats .stat-card {
+    background: var(--surface-2);
+
+    .label {
+        color: var(--muted);
+        margin-bottom: .25rem;
+    }
+
+    .value {
+        font-size: 2.1rem;
+        font-weight: 800;
+    }
+
+    .link {
+        color: var(--accent);
+        text-decoration: none;
+    }
+
+    .link:hover {
+        text-decoration: underline;
+    }
+}
+
+
+
+/* Glider behavior (only rail scrolls) */
+.glider {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    overscroll-behavior: contain;
+    /* prevents the page from taking the scroll */
+    -webkit-overflow-scrolling: touch;
+    /* momentum on iOS */
+
+    &::-webkit-scrollbar {
+        height: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: #2a3542;
+        border-radius: 999px;
+    }
+}
+
+.glider>* {
+    scroll-snap-align: start;
+}

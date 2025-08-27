@@ -1,0 +1,81 @@
+.app-header {
+    height: 64px;
+    backdrop-filter: blur(6px) saturate(180%);
+    background: linear-gradient(180deg, #0f1621 0%, #0f1621e6 100%);
+    border-bottom: 1px solid #1e2b39;
+
+    .brand {
+        font-weight: 800;
+        letter-spacing: .3px;
+        margin-right: 20px;
+    }
+
+    .search-wrap {
+        width: 720px;
+        max-width: 100%;
+    }
+
+    .search-field {
+        width: 100%;
+        --mdc-filled-text-field-container-color: var(--surface-2);
+        --mdc-filled-text-field-label-text-color: var(--muted);
+        border-radius: 999px !important;
+    }
+
+    .ac-list {
+        position: absolute;
+        top: 56px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        background: var(--surface-3);
+        border-radius: 12px;
+        overflow: hidden;
+    }
+
+    .ac-list .item {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: .75rem;
+        padding: .6rem .8rem;
+        color: var(--text);
+        background: transparent;
+        border: 0;
+        text-align: left;
+    }
+
+    .ac-list .item:hover {
+        background: #253041;
+    }
+
+    .ac-list img {
+        width: 46px;
+        height: 32px;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+
+    .ac-list .t {
+        font-weight: 600;
+    }
+
+    .ac-list .p {
+        color: var(--muted) !important;
+    }
+
+    .right .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 2px solid #2a3646;
+    }
+
+    .avatar-btn {
+        margin-left: 4px;
+    }
+
+    .user-menu .menu-header {
+        background: var(--surface-2);
+    }
+}

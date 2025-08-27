@@ -1,0 +1,95 @@
+<app-header></app-header>
+
+<main class="dash">
+  <div class="container-xxl py-4">
+   <section class="banner card mb-4">
+      <div class="banner-inner">
+        <div class="text">Welcome to LearnHub</div>
+        <div class="bar"><span></span></div>
+      </div>
+    </section>
+
+    <!-- Stats row -->
+    <section class="stats row g-3 mb-4">
+      <div class="col-md-4">
+        <div class="stat-card card p-3">
+          <div class="label">My Goals</div>
+          <div class="value">{{ myGoalsCount }}</div>
+          <a class="link small" href="javascript:void(0)">View All</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card card p-3">
+          <div class="label">Enrolled Courses</div>
+          <div class="value">{{ enrolledCount }}</div>
+          <a class="link small" href="javascript:void(0)">View All</a>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="stat-card card p-3">
+          <div class="label">Certificates Earned</div>
+          <div class="value">{{ certificatesCount }}</div>
+          <a class="link small" href="javascript:void(0)">Download</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Rail: Last Viewed -->
+    <section class="rail mb-4">
+      <div class="rail-head">
+        <h5>Last Viewed Courses</h5>
+        <div class="rail-controls">
+          <button class="nav-btn" (click)="scrollRail('last', -1)" aria-label="scroll left">‹</button>
+          <button class="nav-btn" (click)="scrollRail('last', 1)" aria-label="scroll right">›</button>
+        </div>
+      </div>
+      <div
+        #railLast
+        class="rail-body h-scroll glider"
+        (wheel)="onWheel($event, 'last')">
+        @for (item of lastViewed; track item.course.id) {
+          <app-course-card class="me-3"
+            [thumbnailUrl]="item.course.thumbnailUrl"
+            [title]="item.course.title"
+            [provider]="item.course.provider.name"
+            [rating]="item.course.rating"
+            [reviewCount]="item.course.reviewCount"
+            [enrollmentCount]="item.course.enrollmentCount"
+            [difficulty]="item.course.difficulty"
+            [durationText]="item.course.durationText"
+            [progressPercent]="item.progressPercent">
+          </app-course-card>
+        }
+      </div>
+    </section>
+
+    <!-- Rail: Newly Launched -->
+    <section class="rail mb-5">
+      <div class="rail-head">
+        <h5>Newly Launched</h5>
+        <div class="rail-controls">
+          <button class="nav-btn" (click)="scrollRail('new', -1)" aria-label="scroll left">‹</button>
+          <button class="nav-btn" (click)="scrollRail('new', 1)" aria-label="scroll right">›</button>
+        </div>
+      </div>
+      <div
+        #railNew
+        class="rail-body h-scroll glider"
+        (wheel)="onWheel($event, 'new')">
+        @for (c of newlyLaunched; track c.id) {
+          <app-course-card class="me-3"
+            [thumbnailUrl]="c.thumbnailUrl"
+            [title]="c.title"
+            [provider]="c.provider.name"
+            [rating]="c.rating"
+            [reviewCount]="c.reviewCount"
+            [enrollmentCount]="c.enrollmentCount"
+            [difficulty]="c.difficulty"
+            [durationText]="c.durationText"
+            badgeText="New Launch">
+          </app-course-card>
+        }
+      </div>
+    </section>
+  </div>
+</main>

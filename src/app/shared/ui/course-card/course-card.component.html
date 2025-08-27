@@ -1,0 +1,19 @@
+<div class="card-wrap">
+  <div class="thumb">
+    <img [src]="thumbnailUrl" [alt]="title" />
+    @if (progressPercent !== undefined) {
+      <div class="progress-tag">{{ progressPercent }}% Complete</div>
+    }
+    @if (badgeText) { <div class="badge">{{ badgeText }}</div> }
+  </div>
+  <div class="meta">
+    <div class="title">{{ title }}</div>
+    <div class="provider small text-muted">in {{ provider }}</div>
+    <div class="stats small">
+      <span>★ {{ rating }}</span>
+      <span>• {{ reviewCount | number }} reviews</span>
+      <span>• {{ enrollmentCount | number }} Enrolled</span>
+    </div>
+    <div class="meta2 small text-muted">{{ difficulty }} • {{ durationText }}</div>
+  </div>
+</div>

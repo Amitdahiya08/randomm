@@ -1,0 +1,33 @@
+.auth-wrap {
+    .art {
+        background: #3aa06b;
+        align-items: center;
+        justify-content: center;
+
+        .art-inner {
+            max-width: 560px;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+
+    .panel {
+        background: var(--auth-panel-bg);
+        color: var(--auth-panel-text);
+
+        .panel-inner {
+            width: 100%;
+            max-width: 420px;
+        }
+
+        .brand {
+            font-size: 1.6rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+            opacity: .9;
+        }
+    }
+}

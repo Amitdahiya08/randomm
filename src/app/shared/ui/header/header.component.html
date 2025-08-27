@@ -1,0 +1,60 @@
+<header class="app-header">
+  <div class="container-xxl d-flex align-items-center h-100">
+    <div class="brand"> {{ productName }} </div>
+
+    <!-- Centered search -->
+    <div class="search flex-grow-1 d-flex justify-content-center">
+      <div class="search-wrap position-relative">
+        <mat-form-field appearance="fill" class="search-field">
+          <mat-icon matPrefix>search</mat-icon>
+          <input matInput [formControl]="query" placeholder="Search Courses" />
+          <button mat-icon-button matSuffix *ngIf="query.value" (click)="clear()" aria-label="Clear">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+
+        @if (options().length) {
+          <div class="ac-list shadow">
+            @for (c of options(); track c.id) {
+              <button class="item" (click)="selectCourse(c)">
+                <img [src]="c.thumbnailUrl" alt="t" />
+                <div class="info">
+                  <div class="t">{{ c.title }}</div>
+                  <small class="p text-muted">{{ c.provider.name }}</small>
+                </div>
+              </button>
+            }
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- Right icons -->
+    <div class="right d-flex align-items-center">
+      <button mat-icon-button aria-label="Notifications" matBadge="3" matBadgeOverlap="false">
+        <mat-icon>notifications</mat-icon>
+      </button>
+
+      <button class="avatar-btn" mat-icon-button [matMenuTriggerFor]="menu">
+        <img class="avatar" [src]="(user$|async)?.avatarUrl || 'https://i.pravatar.cc/40'"/>
+      </button>
+
+      <mat-menu #menu="matMenu" xPosition="before" yPosition="below" class="user-menu">
+        <div class="menu-header d-flex align-items-center px-3 py-2">
+          <img class="avatar-lg me-2" [src]="(user$|async)?.avatarUrl || ''" alt="">
+          <div class="lh-sm">
+            <div class="fw-semibold">{{ (user$|async)?.fullName }}</div>
+            <small class="text-muted">{{ (user$|async)?.track }}</small>
+          </div>
+        </div>
+        <hr class="dropdown-divider">
+        <button mat-menu-item><mat-icon>person</mat-icon><span>My Profile</span></button>
+        <button mat-menu-item><mat-icon>admin_panel_settings</mat-icon><span>Admin Console</span></button>
+        <button mat-menu-item><mat-icon>school</mat-icon><span>My Courses</span></button>
+        <button mat-menu-item><mat-icon>article</mat-icon><span>Blog</span></button>
+        <hr class="dropdown-divider">
+        <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon><span>Log Out</span></button>
+      </mat-menu>
+    </div>
+  </div>
+</header>
