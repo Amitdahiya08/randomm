@@ -1,0 +1,46 @@
+.filters {
+    background: var(--surface);
+    border-radius: var(--card-radius);
+    color: var(--text);
+
+    h6 {
+        color: var(--text);
+    }
+
+    .group-title {
+        font-weight: 600;
+        margin-bottom: 4px;
+        color: var(--text);
+    }
+
+    mat-checkbox {
+        display: block;
+        margin-bottom: 4px;
+
+        // Override Material checkbox text color
+        .mdc-form-field {
+            color: var(--text) !important;
+        }
+
+        .mdc-checkbox {
+            --mdc-checkbox-unselected-icon-color: var(--muted);
+            --mdc-checkbox-selected-icon-color: var(--accent);
+            --mdc-checkbox-unselected-focus-icon-color: var(--text);
+            --mdc-checkbox-selected-focus-icon-color: var(--accent);
+            --mdc-checkbox-unselected-hover-icon-color: var(--text);
+            --mdc-checkbox-selected-hover-icon-color: var(--accent);
+        }
+    }
+
+    .rating-option {
+        cursor: pointer;
+        margin-bottom: 4px;
+        color: var(--text);
+        padding: 4px 0;
+
+        &:hover {
+            text-decoration: underline;
+            color: var(--accent);
+        }
+    }
+}

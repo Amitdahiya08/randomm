@@ -1,0 +1,30 @@
+<div class="filters card p-3">
+    <h6 class="fw-bold mb-2">Filter</h6>
+
+    <!-- Duration -->
+    <div class="filter-group mb-3">
+        <div class="group-title">Duration</div>
+        <mat-checkbox (change)="toggleDuration('<1w')">
+            < 1 week </mat-checkbox>
+                <mat-checkbox (change)="toggleDuration('1-4w')">1-4 weeks</mat-checkbox>
+                <mat-checkbox (change)="toggleDuration('1-3m')">1-3 months</mat-checkbox>
+                <mat-checkbox (change)="toggleDuration('3-6m')">3-6 months</mat-checkbox>
+                <mat-checkbox (change)="toggleDuration('6-12m')">6-12 months</mat-checkbox>
+    </div>
+
+    <!-- Rating -->
+    <div class="filter-group mb-3">
+        <div class="group-title">Rating</div>
+        <div class="rating-option" (click)="setRating(4.5)">⭐⭐⭐⭐⭐ 4.5+ up</div>
+        <div class="rating-option" (click)="setRating(4)">⭐⭐⭐⭐ 4.0+ up</div>
+        <div class="rating-option" (click)="setRating(3.5)">⭐⭐⭐ 3.5+ up</div>
+    </div>
+
+    <!-- Level -->
+    <div class="filter-group mb-3">
+        <div class="group-title">Course Level</div>
+        <mat-checkbox (change)="toggleLevel('Beginner')">Beginner</mat-checkbox>
+        <mat-checkbox (change)="toggleLevel('Intermediate')">Intermediate</mat-checkbox>
+        <mat-checkbox (change)="toggleLevel('Advanced')">Advanced</mat-checkbox>
+    </div>
+</div>

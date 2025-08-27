@@ -1,0 +1,47 @@
+<app-header></app-header>
+
+<div class="course-discovery container-xxl py-4">
+    <div class="row">
+        <!-- Sidebar -->
+        <div class="col-lg-3 mb-4">
+            <app-filters-sidebar (filtersChange)="onFiltersChange($event)"></app-filters-sidebar>
+        </div>
+
+        <!-- Main content -->
+        <div class="col-lg-9">
+            <!-- Header -->
+            <div class="results-header d-flex justify-content-between align-items-center mb-3">
+                <div class="summary">{{ filtered().length }} Results</div>
+                <mat-form-field appearance="fill" class="sort-field">
+                    <mat-label>Sort</mat-label>
+                    <mat-select [value]="sort()" (valueChange)="onSortChange($event)">
+                        <mat-option value="latest">Latest</mat-option>
+                        <mat-option value="rating">Highest Rating</mat-option>
+                        <mat-option value="reviews">Highest Reviewed</mat-option>
+                        <mat-option value="az">A-Z</mat-option>
+                        <mat-option value="za">Z-A</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+
+            <!-- Grid -->
+            <div class="course-grid row g-3">
+                @for (c of paginated(); track c.id) {
+                <div class="col-md-6 col-lg-4">
+                    <app-course-card [thumbnailUrl]="c.thumbnailUrl" [title]="c.title" [provider]="c.provider.name"
+                        [rating]="c.rating" [reviewCount]="c.reviewCount" [enrollmentCount]="c.enrollmentCount"
+                        [difficulty]="c.difficulty" [durationText]="c.durationText" badgeText="New Launch">
+                    </app-course-card>
+                </div>
+                }
+            </div>
+
+            <!-- Pagination -->
+            <div class="pagination-wrap d-flex justify-content-center mt-4" *ngIf="totalPages() > 1">
+                <button mat-stroked-button (click)="page.set(page()-1)" [disabled]="page()===1">Prev</button>
+                <span class="px-3">Page {{ page() }} of {{ totalPages() }}</span>
+                <button mat-stroked-button (click)="page.set(page()+1)" [disabled]="page()===totalPages()">Next</button>
+            </div>
+        </div>
+    </div>
+</div>

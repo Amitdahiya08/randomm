@@ -8,6 +8,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 export const MATERIAL = [
     MatButtonModule,
@@ -19,5 +20,6 @@ export const MATERIAL = [
     MatProgressSpinnerModule,
     MatAutocompleteModule,
     MatMenuModule,
-    MatCardModule
+    MatCardModule,
+    MatSelectModule
 ];

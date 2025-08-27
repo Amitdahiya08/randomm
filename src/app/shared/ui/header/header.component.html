@@ -6,25 +6,26 @@
     <div class="search flex-grow-1 d-flex justify-content-center">
       <div class="search-wrap position-relative">
         <mat-form-field appearance="fill" class="search-field">
-          <mat-icon matPrefix>search</mat-icon>
-          <input matInput [formControl]="query" placeholder="Search Courses" />
+          <mat-label>Search Courses</mat-label>
+          <mat-icon matPrefix class="cursor-pointer" (click)="goSearch()">search</mat-icon>
+          <input matInput [formControl]="query" (keyup.enter)="goSearch()" />
           <button mat-icon-button matSuffix *ngIf="query.value" (click)="clear()" aria-label="Clear">
             <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
 
         @if (options().length) {
-          <div class="ac-list shadow">
-            @for (c of options(); track c.id) {
-              <button class="item" (click)="selectCourse(c)">
-                <img [src]="c.thumbnailUrl" alt="t" />
-                <div class="info">
-                  <div class="t">{{ c.title }}</div>
-                  <small class="p text-muted">{{ c.provider.name }}</small>
-                </div>
-              </button>
-            }
-          </div>
+        <div class="ac-list shadow">
+          @for (c of options(); track c.id) {
+          <button class="item" (click)="selectCourse(c)">
+            <img [src]="c.thumbnailUrl" alt="t" />
+            <div class="info">
+              <div class="t">{{ c.title }}</div>
+              <small class="p text-muted">{{ c.provider.name }}</small>
+            </div>
+          </button>
+          }
+        </div>
         }
       </div>
     </div>
@@ -36,7 +37,7 @@
       </button>
 
       <button class="avatar-btn" mat-icon-button [matMenuTriggerFor]="menu">
-        <img class="avatar" [src]="(user$|async)?.avatarUrl || 'https://i.pravatar.cc/40'"/>
+        <img class="avatar" [src]="(user$|async)?.avatarUrl || 'https://i.pravatar.cc/40'" />
       </button>
 
       <mat-menu #menu="matMenu" xPosition="before" yPosition="below" class="user-menu">

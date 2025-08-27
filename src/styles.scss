@@ -15,6 +15,10 @@
     --card-radius: 16px;
     --shadow: 0 6px 18px rgba(0, 0, 0, .35);
     --rail-gap: 16px;
+
+    /* Auth panel colors */
+    --auth-panel-bg: var(--surface);
+    --auth-panel-text: var(--text);
 }
 
 html,
@@ -48,7 +52,365 @@ body {
     max-width: 1320px;
 }
 
-/* Material fill fields in dark panel */
+/* ===== Material Design Dark Theme Overrides ===== */
+
+/* Filled text fields */
 .mdc-text-field--filled {
     --mdc-filled-text-field-container-color: var(--surface-2);
+    --mdc-filled-text-field-input-text-color: var(--text);
+    --mdc-filled-text-field-label-text-color: var(--muted);
+    --mdc-filled-text-field-focus-label-text-color: var(--accent);
+    --mdc-filled-text-field-hover-label-text-color: var(--text);
+    --mdc-filled-text-field-caret-color: var(--accent);
+}
+
+/* Outlined text fields */
+.mdc-text-field--outlined {
+    --mdc-outlined-text-field-input-text-color: var(--text);
+    --mdc-outlined-text-field-label-text-color: var(--muted);
+    --mdc-outlined-text-field-focus-label-text-color: var(--accent);
+    --mdc-outlined-text-field-hover-label-text-color: var(--text);
+    --mdc-outlined-text-field-outline-color: #2a3b4e;
+    --mdc-outlined-text-field-focus-outline-color: var(--accent);
+    --mdc-outlined-text-field-hover-outline-color: #3a4b5e;
+    --mdc-outlined-text-field-caret-color: var(--accent);
+}
+
+/* Text field error states */
+.mdc-text-field--invalid {
+    --mdc-filled-text-field-label-text-color: var(--danger);
+    --mdc-filled-text-field-focus-label-text-color: var(--danger);
+    --mdc-outlined-text-field-label-text-color: var(--danger);
+    --mdc-outlined-text-field-focus-label-text-color: var(--danger);
+    --mdc-outlined-text-field-outline-color: var(--danger);
+    --mdc-outlined-text-field-focus-outline-color: var(--danger);
+}
+
+/* Input placeholder text */
+.mat-mdc-input-element::placeholder {
+    color: var(--muted) !important;
+    opacity: 0.7;
+}
+
+/* Checkbox styling */
+.mdc-checkbox {
+    --mdc-checkbox-unselected-icon-color: var(--muted);
+    --mdc-checkbox-selected-icon-color: var(--accent);
+    --mdc-checkbox-selected-checkmark-color: #ffffff;
+    --mdc-checkbox-unselected-focus-icon-color: var(--text);
+    --mdc-checkbox-selected-focus-icon-color: var(--accent);
+    --mdc-checkbox-unselected-hover-icon-color: var(--text);
+    --mdc-checkbox-selected-hover-icon-color: var(--accent);
+}
+
+/* Form field labels */
+.mat-mdc-form-field-label {
+    color: var(--muted) !important;
+}
+
+.mat-mdc-form-field-label.mdc-floating-label--float-above {
+    color: var(--muted) !important;
+}
+
+.mat-focused .mat-mdc-form-field-label {
+    color: var(--accent) !important;
+}
+
+/* Error messages */
+.mat-mdc-form-field-error {
+    color: var(--danger) !important;
+}
+
+/* Select dropdown styling */
+.mat-mdc-select {
+    --mdc-filled-text-field-input-text-color: var(--text);
+    --mdc-filled-text-field-label-text-color: var(--muted);
+    --mdc-outlined-text-field-input-text-color: var(--text);
+    --mdc-outlined-text-field-label-text-color: var(--muted);
+}
+
+/* Select panel (dropdown) */
+.mat-mdc-select-panel {
+    background: var(--surface-2) !important;
+    color: var(--text) !important;
+}
+
+.mat-mdc-option {
+    color: var(--text) !important;
+}
+
+.mat-mdc-option:hover {
+    background: var(--surface-3) !important;
+}
+
+.mat-mdc-option.mdc-list-item--selected {
+    background: var(--surface-3) !important;
+    color: var(--accent) !important;
+}
+
+/* Button styling improvements */
+.mat-mdc-raised-button.mat-primary {
+    --mdc-protected-button-container-color: var(--brand);
+    --mdc-protected-button-label-text-color: #ffffff;
+}
+
+.mat-mdc-raised-button.mat-primary:hover {
+    --mdc-protected-button-container-color: var(--brand-2);
+}
+
+/* Icon button styling */
+.mat-mdc-icon-button {
+    --mdc-icon-button-icon-color: var(--muted);
+}
+
+.mat-mdc-icon-button:hover {
+    --mdc-icon-button-icon-color: var(--text);
+}
+
+/* ===== Additional Material Design Overrides for Better Dark Theme Support ===== */
+
+/* Force text color in all Material components */
+.mat-mdc-form-field {
+    .mat-mdc-text-field-wrapper {
+        .mat-mdc-form-field-flex {
+            .mat-mdc-form-field-infix {
+                .mat-mdc-input-element {
+                    color: var(--text) !important;
+                    caret-color: var(--accent) !important;
+                }
+            }
+        }
+    }
+}
+
+/* Outlined form field specific overrides */
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field {
+    --mdc-outlined-text-field-input-text-color: var(--text);
+    --mdc-outlined-text-field-label-text-color: var(--muted);
+    --mdc-outlined-text-field-focus-label-text-color: var(--accent);
+    --mdc-outlined-text-field-hover-label-text-color: var(--text);
+    --mdc-outlined-text-field-outline-color: #2a3b4e;
+    --mdc-outlined-text-field-focus-outline-color: var(--accent);
+    --mdc-outlined-text-field-hover-outline-color: #3a4b5e;
+    --mdc-outlined-text-field-caret-color: var(--accent);
+}
+
+/* Filled form field specific overrides */
+.mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field.mat-form-field-appearance-fill {
+    --mdc-filled-text-field-container-color: var(--surface-2);
+    --mdc-filled-text-field-input-text-color: var(--text);
+    --mdc-filled-text-field-label-text-color: var(--muted);
+    --mdc-filled-text-field-focus-label-text-color: var(--accent);
+    --mdc-filled-text-field-hover-label-text-color: var(--text);
+    --mdc-filled-text-field-caret-color: var(--accent);
+}
+
+/* Input element styling - highest specificity */
+.mat-mdc-input-element {
+    color: var(--text) !important;
+}
+
+.mat-mdc-input-element::placeholder {
+    color: var(--muted) !important;
+    opacity: 0.7 !important;
+}
+
+/* Label styling */
+.mat-mdc-floating-label {
+    color: var(--muted) !important;
+}
+
+.mat-mdc-floating-label.mdc-floating-label--float-above {
+    color: var(--muted) !important;
+}
+
+.mat-focused .mat-mdc-floating-label {
+    color: var(--accent) !important;
+}
+
+/* Checkbox styling - more specific */
+.mat-mdc-checkbox {
+    --mdc-checkbox-unselected-icon-color: var(--muted);
+    --mdc-checkbox-selected-icon-color: var(--accent);
+    --mdc-checkbox-selected-checkmark-color: #ffffff;
+    --mdc-checkbox-unselected-focus-icon-color: var(--text);
+    --mdc-checkbox-selected-focus-icon-color: var(--accent);
+    --mdc-checkbox-unselected-hover-icon-color: var(--text);
+    --mdc-checkbox-selected-hover-icon-color: var(--accent);
+}
+
+.mat-mdc-checkbox .mdc-form-field {
+    color: var(--text) !important;
+}
+
+.mat-mdc-checkbox .mdc-label {
+    color: var(--text) !important;
+}
+
+/* Menu and dropdown styling */
+.mat-mdc-menu-panel {
+    background: var(--surface-2) !important;
+    color: var(--text) !important;
+}
+
+.mat-mdc-menu-item {
+    color: var(--text) !important;
+}
+
+.mat-mdc-menu-item:hover {
+    background: var(--surface-3) !important;
+}
+
+/* Expansion panel styling */
+.mat-expansion-panel {
+    background: var(--surface) !important;
+    color: var(--text) !important;
+}
+
+.mat-expansion-panel-header {
+    background: var(--surface-2) !important;
+    color: var(--text) !important;
+}
+
+.mat-expansion-panel-header-title {
+    color: var(--text) !important;
+}
+
+.mat-expansion-panel-header-description {
+    color: var(--muted) !important;
+}
+
+.mat-expansion-panel-body {
+    background: var(--surface) !important;
+    color: var(--text) !important;
+}
+
+/* ===== Global Material Component Dark Theme Fixes ===== */
+
+/* Force all Material form fields to use dark theme colors */
+.mat-mdc-form-field * {
+    color: var(--text) !important;
+}
+
+.mat-mdc-form-field .mat-mdc-floating-label {
+    color: var(--muted) !important;
+}
+
+.mat-mdc-form-field.mat-focused .mat-mdc-floating-label {
+    color: var(--accent) !important;
+}
+
+/* Select dropdown specific fixes */
+.mat-mdc-select-value-text {
+    color: var(--text) !important;
+}
+
+.mat-mdc-select-placeholder {
+    color: var(--muted) !important;
+}
+
+.mat-mdc-select-arrow {
+    color: var(--muted) !important;
+}
+
+/* Option styling in dropdowns */
+.mat-mdc-option {
+    color: var(--text) !important;
+    background: var(--surface-2) !important;
+}
+
+.mat-mdc-option:hover {
+    background: var(--surface-3) !important;
+}
+
+.mat-mdc-option.mdc-list-item--selected {
+    background: var(--surface-3) !important;
+    color: var(--accent) !important;
+}
+
+.mat-mdc-option.mat-mdc-option-active {
+    background: var(--surface-3) !important;
+    color: var(--accent) !important;
+}
+
+/* Ensure all text inputs are visible */
+input[matInput] {
+    color: var(--text) !important;
+    caret-color: var(--accent) !important;
+}
+
+input[matInput]::placeholder {
+    color: var(--muted) !important;
+    opacity: 0.7 !important;
+}
+
+/* Button text visibility */
+.mat-mdc-button {
+    color: var(--text) !important;
+}
+
+.mat-mdc-raised-button {
+    color: var(--text) !important;
+}
+
+.mat-mdc-outlined-button {
+    color: var(--text) !important;
+    border-color: var(--muted) !important;
+}
+
+/* Snackbar styling */
+.mat-mdc-snack-bar-container {
+    background: var(--surface-2) !important;
+    color: var(--text) !important;
+}
+
+/* Progress spinner */
+.mat-mdc-progress-spinner {
+    --mdc-circular-progress-active-indicator-color: var(--accent);
+}
+
+/* Tooltip styling */
+.mat-mdc-tooltip {
+    background: var(--surface-3) !important;
+    color: var(--text) !important;
+}
+
+/* ===== Bootstrap Overrides for Dark Theme ===== */
+
+/* Override Bootstrap's text-muted class for dark theme */
+.text-muted {
+    color: var(--muted) !important;
+}
+
+/* Override Bootstrap's small text color */
+.small {
+    color: var(--muted) !important;
+}
+
+/* Ensure all text elements use proper dark theme colors */
+.text-primary {
+    color: var(--accent) !important;
+}
+
+.text-secondary {
+    color: var(--muted) !important;
+}
+
+/* Card styling overrides */
+.card {
+    background: var(--surface) !important;
+    color: var(--text) !important;
+    border-color: #1b2a38 !important;
+}
+
+.card-body {
+    color: var(--text) !important;
+}
+
+.card-title {
+    color: var(--text) !important;
+}
+
+.card-text {
+    color: var(--text) !important;
 }

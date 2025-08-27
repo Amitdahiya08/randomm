@@ -1,0 +1,38 @@
+.course-discovery {
+    color: var(--text);
+
+    .results-header {
+        .summary {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text);
+        }
+
+        .sort-field {
+            width: 200px;
+
+            // Ensure dropdown styling
+            .mat-mdc-select {
+                color: var(--text) !important;
+            }
+
+            .mat-mdc-select-value {
+                color: var(--text) !important;
+            }
+
+            .mat-mdc-select-arrow {
+                color: var(--muted) !important;
+            }
+        }
+    }
+
+    .course-grid {
+        margin-top: 1rem;
+    }
+
+    .pagination-wrap {
+        button {
+            margin: 0 6px;
+        }
+    }
+}

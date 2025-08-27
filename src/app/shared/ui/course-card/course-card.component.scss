@@ -48,21 +48,23 @@
 
     .meta {
         padding: 12px 14px;
+        color: var(--text);
     }
 
     .title {
         font-weight: 700;
         line-height: 1.2;
         min-height: 40px;
+        color: var(--text);
     }
 
     .provider {
-        color: var(--muted);
+        color: var(--muted) !important;
     }
 
     .stats {
         margin-top: 6px;
-        color: #d7e5f7;
+        color: var(--text) !important;
         opacity: .95;
     }
 
@@ -72,6 +74,16 @@
 
     .meta2 {
         margin-top: 4px;
-        color: var(--muted);
+        color: var(--muted) !important;
+    }
+
+    // Override Bootstrap's text-muted class within this component
+    .text-muted {
+        color: var(--muted) !important;
+    }
+
+    // Ensure all small text is visible
+    .small {
+        color: var(--muted) !important;
     }
 }

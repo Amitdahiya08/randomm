@@ -33,8 +33,19 @@ export class HeaderComponent {
             this.courses.search(term).subscribe(res => this.options.set(res.slice(0, 8)));
         });
     }
+    goSearch() {
+        const q = (this.query.value || '').trim();
+        if (!q) return;
+        this.router.navigate(['/search'], { queryParams: { q } });
+        this.clear();
+    }
+
+    selectCourse(c: Course) {
+        this.router.navigate(['/search'], { queryParams: { q: c.title, highlight: c.id } });
+        this.clear();
+    }
 
     clear() { this.query.setValue(''); this.options.set([]); }
-    selectCourse(c: Course) { this.router.navigate(['/dashboard'], { queryParams: { highlight: c.id } }); this.clear(); }
+    // selectCourse(c: Course) { this.router.navigate(['/dashboard'], { queryParams: { highlight: c.id } }); this.clear(); }
     logout() { this.auth.logout(); this.router.navigateByUrl('/auth/login'); }
 }

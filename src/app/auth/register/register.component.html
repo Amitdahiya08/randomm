@@ -5,36 +5,36 @@
   <form [formGroup]="form" (ngSubmit)="submit()">
     <mat-form-field appearance="outline" class="w-100 mb-3">
       <mat-label>Full Name</mat-label>
-      <input matInput placeholder="Enter your full name" formControlName="fullName" />
+      <input matInput formControlName="fullName" />
       @if (form.controls.fullName.invalid) {
-        <mat-error>Enter your name</mat-error>
+      <mat-error>Enter your name</mat-error>
       }
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="w-100 mb-3">
       <mat-label>User Name</mat-label>
-      <input matInput placeholder="Choose a username" formControlName="username" />
+      <input matInput formControlName="username" />
       @if (form.controls.username.invalid) {
-        <mat-error>Username required</mat-error>
+      <mat-error>Username required</mat-error>
       }
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="w-100 mb-3">
       <mat-label>Email</mat-label>
-      <input matInput placeholder="Enter your email address" formControlName="email" />
+      <input matInput formControlName="email" />
       @if (form.controls.email.invalid) {
-        <mat-error>Valid email required</mat-error>
+      <mat-error>Valid email required</mat-error>
       }
     </mat-form-field>
 
     <mat-form-field appearance="outline" class="w-100 mb-2">
       <mat-label>Password</mat-label>
-      <input matInput placeholder="Enter your password" [type]="hide() ? 'password' : 'text'" formControlName="password" />
+      <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
       <button type="button" mat-icon-button matSuffix (click)="toggle()">
         <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
       </button>
       @if (form.controls.password.invalid) {
-        <mat-error>Min 6 characters</mat-error>
+      <mat-error>Min 6 characters</mat-error>
       }
     </mat-form-field>
 
@@ -44,10 +44,10 @@
 
     <button mat-raised-button color="primary" class="btn-action w-100" [disabled]="loading() || form.invalid">
       @if (loading()) {
-        <mat-progress-spinner diameter="18" mode="indeterminate"></mat-progress-spinner>
+      <mat-progress-spinner diameter="18" mode="indeterminate"></mat-progress-spinner>
       }
       @if (!loading()) {
-        <span>Register</span>
+      <span>Register</span>
       }
     </button>
 
