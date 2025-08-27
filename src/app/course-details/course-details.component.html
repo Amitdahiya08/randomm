@@ -32,6 +32,7 @@
                 <div class="banner-art"></div>
             </div>
         </div>
+
     </section>
 
     <!-- Metrics Bar -->
@@ -92,23 +93,23 @@
                 </div>
 
                 <mat-accordion multi>
-                    @for (s of sections(); track s.id) {
+                    @for (section of sections(); track section.id) {
                     <mat-expansion-panel>
                         <mat-expansion-panel-header>
-                            <mat-panel-title>{{ s.title }}</mat-panel-title>
+                            <mat-panel-title>{{ section.title }}</mat-panel-title>
                             <mat-panel-description>
-                                {{ s.lectures.length }} Lectures •
-                                {{ getSectionDurationHours(s) }}h {{ getSectionDurationMinutes(s) }}m
+                                {{ section.lectures.length }} Lectures •
+                                {{ getSectionDurationHours(section) }}h {{ getSectionDurationMinutes(section) }}m
                             </mat-panel-description>
                         </mat-expansion-panel-header>
 
                         <ul class="lectures list-unstyled m-0">
-                            @for (l of s.lectures; track l.id) {
+                            @for (lecture of section.lectures; track lecture.id) {
                             <li class="lecture">
-                                <span class="t">{{ l.title }}</span>
-                                <span class="time">{{ (l.durationMinutes/60) >= 1 ? (l.durationMinutes/60 |
-                                    number:'1.0-0') + 'h' : '' }}
-                                    {{ l.durationMinutes%60 }}m</span>
+                                <a [routerLink]="['/learn', course()!.id, 'lecture', lecture.id]" class="no-decoration">
+                                    <span class="t">{{ lecture.title }}</span>
+                                </a>
+                                <span class="time">{{ lecture.durationMinutes }}m</span>
                             </li>
                             }
                         </ul>

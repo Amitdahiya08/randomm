@@ -1,0 +1,47 @@
+<!-- cSpell:ignore Youll -->
+<app-header></app-header>
+
+@if (course(); as c) {
+<div class="learn container-xxl py-3">
+    <nav class="breadcrumb-wrap mb-2">
+        <a routerLink="/dashboard" class="crumb">Home</a>
+        <span class="sep">›</span>
+        <a [routerLink]="['/courses', c.id]" class="crumb">{{ c.title }}</a>
+        <span class="sep">›</span>
+        <span class="crumb current">Learning</span>
+    </nav>
+
+    <div class="row g-3">
+        <!-- Left: Player + tabs -->
+        <div class="col-lg-8">
+            <app-video-player [videoId]="videoId()" #player>
+            </app-video-player>
+
+            <!-- hook end callback handled in component -->
+
+            <mat-tab-group class="below-tabs mt-3" animationDuration="250ms">
+                <mat-tab label="Overview">
+                    <app-overview-panel [whatYoullLearn]="c.whatYoullLearn || []" [skills]="c.skills || []"
+                        [requirements]="defaultRequirements">
+                    </app-overview-panel>
+                </mat-tab>
+                <mat-tab label="Author Details">
+                    <app-author-panel [fullName]="author()?.fullName" [track]="author()?.track"
+                        [avatarUrl]="author()?.avatarUrl" [bio]="author()?.bio">
+                    </app-author-panel>
+                </mat-tab>
+                <mat-tab label="Testimonials">
+                    <app-testimonials-grid [items]="testimonials()"></app-testimonials-grid>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+
+        <!-- Right: Curriculum -->
+        <div class="col-lg-4">
+            <app-curriculum-panel [sections]="sections()" [activeLectureId]="lectureId()"
+                [completedIds]="completedIds()" (pick)="pickLecture($event)">
+            </app-curriculum-panel>
+        </div>
+    </div>
+</div>
+}

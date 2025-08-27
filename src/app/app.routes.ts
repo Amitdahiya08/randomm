@@ -5,12 +5,14 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
 import { CourseDiscoveryComponent } from './course-discovery/course-discovery.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
+import { LearnComponent } from './learn/learn.component';
 
 export const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
     { path: 'auth/login', component: LoginComponent },
     { path: 'auth/register', component: RegisterComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [authGuard] },
+    { path: 'learn/:courseId/lecture/:lectureId', component: LearnComponent, canActivate: [authGuard] },
     { path: 'search', component: CourseDiscoveryComponent, canActivate: [authGuard] },
     { path: 'courses/:id', component: CourseDetailsComponent, canActivate: [authGuard] },
     { path: '**', redirectTo: 'dashboard' }
