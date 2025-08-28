@@ -14,14 +14,14 @@
 
 /* Banner */
 .banner {
-    background: linear-gradient(90deg, #0aa85f 0%, #18c074 40%, #11d08f 100%);
-    border: 0;
+    background: linear-gradient(90deg, #0aa85f 0%, #18c074 40%, #11d08f 100%) !important;
+    border: 0 !important;
 
     .banner-inner {
-        padding: 18px 20px;
+        padding: 18px 20px !important;
         position: relative;
         overflow: hidden;
-        border-radius: var(--card-radius);
+        border-radius: var(--card-radius) !important;
 
         &:before,
         &:after {
@@ -37,26 +37,26 @@
         }
 
         .text {
-            text-align: center;
-            font-weight: 900;
-            letter-spacing: .15rem;
-            color: #062313;
-            font-size: 1.25rem;
+            text-align: center !important;
+            font-weight: 900 !important;
+            letter-spacing: .15rem !important;
+            color: #062313 !important;
+            font-size: 1.25rem !important;
         }
 
         .bar {
-            height: 6px;
-            background: #0fb86b;
-            border-radius: 999px;
-            margin-top: 10px;
+            height: 6px !important;
+            background: #0fb86b !important;
+            border-radius: 999px !important;
+            margin-top: 10px !important;
         }
 
         .bar span {
-            display: block;
-            height: 100%;
-            width: 38%;
-            background: #d2ffe9;
-            border-radius: 999px;
+            display: block !important;
+            height: 100% !important;
+            width: 38% !important;
+            background: #d2ffe9 !important;
+            border-radius: 999px !important;
         }
     }
 }

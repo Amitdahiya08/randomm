@@ -10,6 +10,20 @@
         letter-spacing: .3px;
         margin-right: 20px;
         color: var(--text);
+        text-decoration: none;
+        cursor: pointer;
+        transition: color 0.2s ease;
+
+        &:hover {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        &:focus {
+            color: var(--accent);
+            text-decoration: none;
+            outline: none;
+        }
     }
 
     .search-wrap {
