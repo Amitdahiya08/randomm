@@ -1,0 +1,75 @@
+<app-header></app-header>
+
+<div class="my-courses container-xxl py-4">
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb-wrap">
+        <a routerLink="/dashboard" class="crumb">Home</a>
+        <span class="sep">›</span>
+        <span class="crumb current">My Courses</span>
+    </nav>
+
+    <!-- Title row -->
+    <div class="title-row d-flex align-items-center justify-content-between mb-2">
+        <h2 class="page-title m-0">My Courses</h2>
+        <button mat-raised-button color="primary" class="btn-create" (click)="createNewCourse()">
+            Create New
+        </button>
+    </div>
+
+    <!-- Tabs -->
+    <mat-tab-group class="status-tabs" [animationDuration]="'200ms'"
+        (selectedIndexChange)="setTab($event === 0 ? 'Published' : $event === 1 ? 'Draft' : 'Archived')">
+        <mat-tab label="Published"></mat-tab>
+        <mat-tab label="Draft"></mat-tab>
+        <mat-tab label="Archived"></mat-tab>
+    </mat-tab-group>
+
+    <!-- Toolbar -->
+    <div class="toolbar d-flex align-items-center justify-content-between mt-2">
+        <mat-form-field appearance="fill" class="search">
+            <mat-label>Search course</mat-label>
+            <mat-icon matPrefix>search</mat-icon>
+            <input matInput [formControl]="q" placeholder="Search course" />
+            @if (q.value) {
+            <button mat-icon-button matSuffix (click)="q.setValue('')" aria-label="Clear">
+                <mat-icon>close</mat-icon>
+            </button>
+            }
+        </mat-form-field>
+
+        <div class="sort d-flex align-items-center gap-2">
+            <span class="muted">Sort:</span>
+            <mat-form-field appearance="fill" class="sort-field">
+                <mat-select [value]="sort()" (valueChange)="setSort($event)">
+                    <mat-option value="latest">Latest</mat-option>
+                    <mat-option value="rating">Highest Rating</mat-option>
+                    <mat-option value="reviews">Highest Reviewed</mat-option>
+                    <mat-option value="az">A-Z</mat-option>
+                    <mat-option value="za">Z-A</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <!-- Grid -->
+    <div class="grid row g-3 mt-1">
+        @if (view().length === 0) {
+        <div class="col-12">
+            <div class="empty card p-4 text-center">
+                No courses found for this filter.
+            </div>
+        </div>
+        } @else {
+        @for (c of view(); track c.id) {
+        <div class="col-sm-6 col-lg-4 col-xxl-3">
+            <a class="no-decoration" [routerLink]="['/courses', c.id]">
+                <app-course-card [thumbnailUrl]="c.thumbnailUrl" [title]="c.title" [provider]="c.provider.name"
+                    [rating]="c.rating" [reviewCount]="c.reviewCount" [enrollmentCount]="c.enrollmentCount"
+                    [difficulty]="c.difficulty" [durationText]="c.durationText">
+                </app-course-card>
+            </a>
+        </div>
+        }
+        }
+    </div>
+</div>

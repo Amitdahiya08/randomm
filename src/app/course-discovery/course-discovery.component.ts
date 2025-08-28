@@ -42,7 +42,7 @@ export class CourseDiscoveryComponent implements OnInit {
     }
 
     loadCourses() {
-        this.courseService.getAll().subscribe(cs => this.courses.set(cs));
+        this.courseService.getPublished().subscribe(cs => this.courses.set(cs));
     }
 
     onFiltersChange(f: any) { this.filters.set(f); this.page.set(1); }

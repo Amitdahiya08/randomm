@@ -17,7 +17,7 @@ export interface Course {
     durationText: string;          // e.g., "6 months", "5 weeks", "8 weeks"
     skills?: string[];
     whatYoullLearn?: string[];
-    status: 'Published' | 'Draft';
+    status: 'Published' | 'Draft' | 'Archived';
     publishedDate: string;         // ISO
 }
 
@@ -36,13 +36,14 @@ export class CourseService {
 
     search(term: string) {
         const q = term.trim().toLowerCase();
-        if (!q) return this.getAll(); // empty query = all results
+        if (!q) return this.getPublished(); // empty query = all published results
 
         return this.http.get<Course[]>(`${this.API}/courses`).pipe(
             map(courses =>
                 courses.filter(c =>
-                    c.title.toLowerCase().includes(q) ||
-                    c.skills?.some(s => s.toLowerCase().includes(q))
+                    c.status === 'Published' && // Only search published courses
+                    (c.title.toLowerCase().includes(q) ||
+                        c.skills?.some(s => s.toLowerCase().includes(q)))
                 )
             )
         );
@@ -59,7 +60,11 @@ export class CourseService {
     getRelated(base: Course, limit = 5) {
         return this.getAll().pipe(
             map(list => list
-                .filter(c => c.id !== base.id && c.skills?.some(s => base.skills?.includes(s)))
+                .filter(c =>
+                    c.id !== base.id &&
+                    c.status === 'Published' && // Only show published related courses
+                    c.skills?.some(s => base.skills?.includes(s))
+                )
                 .sort((a, b) => b.rating - a.rating)
                 .slice(0, limit)
             )
@@ -77,7 +82,11 @@ export class CourseService {
 
     getNewlyLaunched(limit = 12) {
         return this.getAll().pipe(
-            map(list => [...list].sort((a, b) => +new Date(b.publishedDate) - +new Date(a.publishedDate)).slice(0, limit))
+            map(list => [...list]
+                .filter(course => course.status === 'Published') // Only show published courses
+                .sort((a, b) => +new Date(b.publishedDate) - +new Date(a.publishedDate))
+                .slice(0, limit)
+            )
         );
     }
 
@@ -85,6 +94,13 @@ export class CourseService {
         if (!ids?.length) return this.getAll().pipe(map(() => [] as Course[]));
         const params = ids.map(id => `id=${id}`).join('&');
         return this.http.get<Course[]>(`${this.API}/courses?${params}`);
+    }
+
+    /** Get only published courses */
+    getPublished() {
+        return this.getAll().pipe(
+            map(courses => courses.filter(course => course.status === 'Published'))
+        );
     }
 
     /** ===== Helpers for facets ===== */

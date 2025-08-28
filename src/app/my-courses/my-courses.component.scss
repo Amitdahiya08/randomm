@@ -1,0 +1,68 @@
+:host {
+    display: block;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.card {
+    background: var(--surface);
+    border: 1px solid #1b2a38;
+    border-radius: 16px;
+}
+
+.breadcrumb-wrap {
+    color: var(--muted);
+    margin-bottom: 6px;
+
+    .crumb {
+        color: #9ad4ff;
+        text-decoration: none;
+    }
+
+    .crumb.current {
+        color: var(--text);
+    }
+
+    .sep {
+        margin: 0 6px;
+        color: #6a7e95;
+    }
+}
+
+.page-title {
+    font-weight: 800;
+}
+
+.btn-create {
+    background: var(--brand);
+    color: #052214;
+    font-weight: 700;
+}
+
+.status-tabs ::ng-deep .mat-mdc-tab-header {
+    background: transparent;
+    border-bottom: 0;
+}
+
+.status-tabs ::ng-deep .mat-mdc-tab .mdc-tab__content {
+    font-weight: 700;
+}
+
+.toolbar .search {
+    width: 360px;
+    max-width: 60vw;
+}
+
+.toolbar .sort-field {
+    width: 180px;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.grid .empty {
+    background: var(--surface-2);
+    border: 1px dashed #294055;
+    border-radius: 16px;
+}

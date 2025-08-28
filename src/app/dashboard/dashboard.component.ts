@@ -33,14 +33,18 @@ export class DashboardComponent implements OnInit {
 
         this.enrollments.forUser(user.id).subscribe(enrs => {
             this.enrolled = enrs;
-            const ids = enrs.map(e => e.courseId);
-            this.courses.byIds(ids).subscribe(cs => {
-                const mapById = new Map(cs.map(c => [c.id, c]));
-                this.lastViewed = enrs.map(e => ({ course: mapById.get(e.courseId)!, progressPercent: e.progressPercent }));
-            });
         });
 
-        this.courses.getNewlyLaunched(16).subscribe(cs => this.newlyLaunched = cs);
+        // Load newly launched courses (published only)
+        this.courses.getNewlyLaunched(16).subscribe(cs => {
+            this.newlyLaunched = cs;
+            // For now, show the same courses in last viewed section
+            // Remove complex last watched logic as requested
+            this.lastViewed = cs.slice(0, 8).map(course => ({
+                course,
+                progressPercent: Math.floor(Math.random() * 100) // Temporary progress for display
+            }));
+        });
     }
 
     get enrolledCount() { return this.enrolled.length; }

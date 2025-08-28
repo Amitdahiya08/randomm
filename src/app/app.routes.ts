@@ -5,7 +5,10 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { authGuard } from './core/guards/auth.guard';
 import { CourseDiscoveryComponent } from './course-discovery/course-discovery.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
+import { authorGuard } from './core/guards/author.guard';
 import { LearnComponent } from './learn/learn.component';
+import { MyCoursesComponent } from './my-courses/my-courses.component';
+
 
 export const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
@@ -15,5 +18,6 @@ export const routes: Routes = [
     { path: 'learn/:courseId/lecture/:lectureId', component: LearnComponent, canActivate: [authGuard] },
     { path: 'search', component: CourseDiscoveryComponent, canActivate: [authGuard] },
     { path: 'courses/:id', component: CourseDetailsComponent, canActivate: [authGuard] },
+    { path: 'author/courses', component: MyCoursesComponent, canActivate: [authGuard, authorGuard] },
     { path: '**', redirectTo: 'dashboard' }
 ];

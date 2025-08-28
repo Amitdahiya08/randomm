@@ -293,6 +293,70 @@
         "Master the art and science of prompt engineering, learning various patterns and techniques to craft effective prompts that elicit desired responses from AI models.",
         "Explore the critical ethical considerations surrounding generative AI and learn how to develop and deploy these powerful technologies responsibly."
       ]
+    },
+    {
+      "id": "109",
+      "title": "Advanced React Development",
+      "subtitle": "Master modern React patterns and best practices",
+      "authorId": 2,
+      "provider": {
+        "name": "Tech Academy",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/1024px-React-icon.svg.png"
+      },
+      "thumbnailUrl": "https://images.pexels.com/photos/11035380/pexels-photo-11035380.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "rating": 4.7,
+      "reviewCount": 2500,
+      "enrollmentCount": 15000,
+      "difficulty": "Advanced",
+      "durationText": "8 weeks",
+      "skills": [
+        "React",
+        "JavaScript",
+        "TypeScript",
+        "State Management",
+        "Performance Optimization"
+      ],
+      "whatYoullLearn": [
+        "Master advanced React patterns and hooks",
+        "Implement efficient state management solutions",
+        "Optimize React applications for performance"
+      ],
+      "requirements": [
+        "Basic React knowledge required"
+      ],
+      "status": "Draft",
+      "publishedDate": "2025-08-28T00:00:00.000Z"
+    },
+    {
+      "id": "110",
+      "title": "Legacy JavaScript Course",
+      "subtitle": "Old course that's no longer maintained",
+      "authorId": 2,
+      "provider": {
+        "name": "Old School Tech",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png"
+      },
+      "thumbnailUrl": "https://images.pexels.com/photos/4164418/pexels-photo-4164418.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "rating": 3.8,
+      "reviewCount": 500,
+      "enrollmentCount": 2000,
+      "difficulty": "Beginner",
+      "durationText": "4 weeks",
+      "skills": [
+        "JavaScript",
+        "DOM Manipulation",
+        "ES5"
+      ],
+      "whatYoullLearn": [
+        "Learn basic JavaScript concepts",
+        "Understand DOM manipulation",
+        "Work with legacy JavaScript patterns"
+      ],
+      "requirements": [
+        "No experience required"
+      ],
+      "status": "Archived",
+      "publishedDate": "2020-01-15T00:00:00.000Z"
     }
   ],
   "curriculum": [

@@ -7,11 +7,12 @@ import { CourseService, Course } from '../../../core/services/course.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatBadgeModule } from '@angular/material/badge';
+import { RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-header',
     standalone: true,
-    imports: [CommonModule, ReactiveFormsModule, MatMenuModule, MatBadgeModule, ...MATERIAL],
+    imports: [CommonModule, ReactiveFormsModule, MatMenuModule, MatBadgeModule, ...MATERIAL, RouterLink],
     templateUrl: './header.component.html',
     styleUrls: ['./header.component.scss']
 })
