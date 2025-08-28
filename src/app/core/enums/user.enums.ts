@@ -8,7 +8,7 @@
  */
 export enum UserRole {
   LEARNER = 'Learner',
-  INSTRUCTOR = 'Instructor',
+  INSTRUCTOR = 'Author',
   ADMIN = 'Admin',
   MODERATOR = 'Moderator'
 }
