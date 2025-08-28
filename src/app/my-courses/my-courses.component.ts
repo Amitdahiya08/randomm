@@ -4,7 +4,8 @@ import { RouterLink, Router } from '@angular/router';
 import { MATERIAL } from '../shared/material.imports';
 import { MatTabsModule } from '@angular/material/tabs';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { CourseService, Course } from '../core/services/course.service';
+import { CourseService } from '../core/services/course.service';
+import { Course } from '../core/models';
 import { AuthService } from '../core/services/auth.service';
 import { CourseCardComponent } from '../shared/ui/course-card/course-card.component';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -48,7 +49,7 @@ export class MyCoursesComponent implements OnInit {
         if (query) {
             list = list.filter(c =>
                 c.title.toLowerCase().includes(query) ||
-                (c.skills ?? []).some(sk => sk.toLowerCase().includes(query))
+                (c.skills ?? []).some((skill: string) => skill.toLowerCase().includes(query))
             );
         }
 

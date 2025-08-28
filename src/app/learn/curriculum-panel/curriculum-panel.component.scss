@@ -1,0 +1,136 @@
+/**
+ * Curriculum Panel Component Styles
+ * Organized with proper CSS custom properties and BEM-like naming
+ */
+
+// Component variables
+:host {
+  --curriculum-surface-bg: var(--surface);
+  --curriculum-border-color: #1b2a38;
+  --curriculum-muted-text: var(--muted);
+  --curriculum-hover-bg: #1b2531;
+  --curriculum-active-bg: #18c07433;
+  --curriculum-active-border: #18c07466;
+  --curriculum-border-radius: 16px;
+  --curriculum-lecture-border-radius: 8px;
+  --curriculum-section-margin: 10px;
+  --curriculum-title-margin: 8px;
+  --curriculum-section-title-margin: 6px 0;
+  --curriculum-lecture-padding: 10px 8px;
+  --curriculum-lecture-gap: 8px;
+}
+
+// Main panel container
+.panel {
+  &.card {
+    background: var(--curriculum-surface-bg);
+    border: 1px solid var(--curriculum-border-color);
+    border-radius: var(--curriculum-border-radius);
+  }
+}
+
+// Panel title
+.title {
+  font-weight: 800;
+  margin-bottom: var(--curriculum-title-margin);
+  color: inherit;
+}
+
+// Section container
+.sec {
+  margin-bottom: var(--curriculum-section-margin);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Section title
+.sec-title {
+  color: var(--curriculum-muted-text);
+  font-weight: 600;
+  margin: var(--curriculum-section-title-margin);
+  font-size: 0.95rem;
+}
+
+// Lecture item
+.lec {
+  display: flex;
+  align-items: center;
+  gap: var(--curriculum-lecture-gap);
+  padding: var(--curriculum-lecture-padding);
+  border-radius: var(--curriculum-lecture-border-radius);
+  cursor: pointer;
+  transition: background-color 0.2s ease, outline 0.2s ease;
+
+  // Hover state
+  &:hover {
+    background: var(--curriculum-hover-bg);
+  }
+
+  // Active/selected state
+  &.active {
+    background: var(--curriculum-active-bg);
+    outline: 1px solid var(--curriculum-active-border);
+  }
+
+  // Completed state
+  &.done {
+    .t {
+      text-decoration: line-through;
+      opacity: 0.85;
+    }
+  }
+}
+
+// Completion checkbox/icon
+.cbox {
+  flex-shrink: 0;
+  font-size: 1rem;
+  width: 20px;
+  text-align: center;
+  color: var(--curriculum-muted-text);
+
+  .lec.done & {
+    color: #4caf50; // Green for completed
+  }
+}
+
+// Lecture title
+.t {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: inherit;
+}
+
+// Duration time
+.time {
+  color: var(--curriculum-muted-text);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  font-weight: 500;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .lec {
+    padding: 8px 6px;
+    gap: 6px;
+  }
+
+  .t {
+    font-size: 0.85rem;
+  }
+
+  .time {
+    font-size: 0.8rem;
+  }
+}
+
+// Dark theme adjustments
+@media (prefers-color-scheme: dark) {
+  :host {
+    --curriculum-hover-bg: #2a3441;
+  }
+}

@@ -24,17 +24,24 @@ export class FiltersSidebarComponent {
         });
     }
 
-    toggleArray(arr: string[], value: string) {
-        return arr.includes(value) ? arr.filter(v => v !== value) : [...arr, value];
+    toggleArray(currentArray: string[], toggleValue: string): string[] {
+        return currentArray.includes(toggleValue)
+            ? currentArray.filter(item => item !== toggleValue)
+            : [...currentArray, toggleValue];
     }
 
-    toggleDuration(value: string) {
-        this.duration.set(this.toggleArray(this.duration(), value));
+    toggleDuration(durationValue: string) {
+        this.duration.set(this.toggleArray(this.duration(), durationValue));
         this.emit();
     }
-    setRating(v: number) { this.rating.set(v); this.emit(); }
-    toggleLevel(value: string) {
-        this.level.set(this.toggleArray(this.level(), value));
+
+    setRating(ratingValue: number) {
+        this.rating.set(ratingValue);
+        this.emit();
+    }
+
+    toggleLevel(levelValue: string) {
+        this.level.set(this.toggleArray(this.level(), levelValue));
         this.emit();
     }
 }

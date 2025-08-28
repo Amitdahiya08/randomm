@@ -1,0 +1,33 @@
+<div class="panel card p-3">
+  <div class="title">{{ uiConstants.TITLE }}</div>
+  
+  @for (section of sections; track section.id) {
+    <div class="sec">
+      <div class="sec-title">
+        {{ uiConstants.SECTION_PREFIX }} {{ getSectionNumber($index) }}: {{ section.title }}
+      </div>
+      
+      <ul class="list-unstyled m-0">
+        @for (lecture of section.lectures; track lecture.id) {
+          <li class="lec"
+              [class.active]="lecture.id === activeLectureId"
+              [class.done]="isLectureCompleted(lecture.id)"
+              (click)="onLectureSelect(lecture.id)">
+            
+            <span class="cbox">
+              {{ getCompletionIcon(lecture.id) }}
+            </span>
+            
+            <span class="t">
+              {{ getLectureNumber($index, section) }}. {{ lecture.title }}
+            </span>
+            
+            <span class="time">
+              {{ lecture.durationMinutes }}{{ uiConstants.MINUTES_SUFFIX }}
+            </span>
+          </li>
+        }
+      </ul>
+    </div>
+  }
+</div>

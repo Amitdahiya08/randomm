@@ -1,0 +1,130 @@
+<div class="video-player card" 
+     [class.loading]="isLoading" 
+     [class.error]="hasError"
+     role="region" 
+     aria-label="Video Player">
+  
+  <!-- Video Frame Container -->
+  <div class="video-frame" 
+       [style.aspect-ratio]="aspectRatio">
+    <div #videoHost 
+         class="video-host" 
+         [id]="hostElementId"
+         role="application"
+         aria-label="YouTube Video Player">
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" 
+         *ngIf="isLoading"
+         role="status"
+         aria-live="polite">
+      <div class="loading-spinner"></div>
+      <span class="loading-text">{{ uiConstants.LOADING_TEXT }}</span>
+    </div>
+    
+    <!-- Error Overlay -->
+    <div class="error-overlay" 
+         *ngIf="hasError"
+         role="alert"
+         aria-live="assertive">
+      <div class="error-icon">⚠️</div>
+      <span class="error-text">{{ uiConstants.ERROR_TEXT }}</span>
+      <button class="retry-btn control-btn" 
+              (click)="retryLoad()"
+              aria-label="Retry loading video">
+        Retry
+      </button>
+    </div>
+  </div>
+
+  <!-- Video Controls -->
+  <div class="video-controls" 
+       role="toolbar" 
+       aria-label="Video Controls">
+    
+    <!-- Play/Pause Button -->
+    <button class="control-btn play-btn" 
+            (click)="togglePlayPause()"
+            [disabled]="!isPlayerReady"
+            [attr.aria-label]="playerState.isPlaying ? uiConstants.PAUSE_TEXT : uiConstants.PLAY_TEXT"
+            type="button">
+      <span class="btn-icon" [innerHTML]="getPlayPauseIcon()"></span>
+      <span class="btn-text">{{ getPlayPauseText() }}</span>
+    </button>
+
+    <!-- Progress Bar -->
+    <div class="progress-container" 
+         role="slider"
+         [attr.aria-label]="'Video progress: ' + formatTime(playerState.currentTime) + ' of ' + formatTime(playerState.duration)"
+         [attr.aria-valuemin]="0"
+         [attr.aria-valuemax]="playerState.duration"
+         [attr.aria-valuenow]="playerState.currentTime">
+      <input class="progress-bar" 
+             type="range" 
+             min="0" 
+             [max]="playerState.duration" 
+             [value]="playerState.currentTime"
+             (input)="onProgressChange($event)"
+             (change)="seekToTime($event)"
+             [disabled]="!isPlayerReady"
+             aria-label="Video progress slider" />
+      <div class="progress-track">
+        <div class="progress-fill" 
+             [style.width.%]="getProgressPercentage()"></div>
+      </div>
+    </div>
+
+    <!-- Time Display -->
+    <div class="time-display" 
+         role="timer"
+         aria-live="off">
+      <span class="current-time">{{ formatTime(playerState.currentTime) }}</span>
+      <span class="time-separator">{{ uiConstants.TIME_SEPARATOR }}</span>
+      <span class="total-time">{{ formatTime(playerState.duration) }}</span>
+    </div>
+
+    <!-- Speed Control -->
+    <div class="speed-control">
+      <label for="speed-select" class="sr-only">Playback Speed</label>
+      <select class="speed-select control-btn" 
+              id="speed-select"
+              [value]="playerState.playbackRate" 
+              (change)="changePlaybackSpeed($event)"
+              [disabled]="!isPlayerReady"
+              aria-label="Playback speed">
+        <option *ngFor="let speed of availableSpeeds" 
+                [value]="speed">
+          {{ speed }}{{ uiConstants.SPEED_SUFFIX }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Volume/Mute Control -->
+    <button class="control-btn mute-btn" 
+            (click)="toggleMute()"
+            [disabled]="!isPlayerReady"
+            [attr.aria-label]="playerState.isMuted ? uiConstants.UNMUTE_TEXT : uiConstants.MUTE_TEXT"
+            type="button">
+      <span class="btn-icon" [innerHTML]="getMuteIcon()"></span>
+      <span class="btn-text">{{ getMuteText() }}</span>
+    </button>
+
+    <!-- Fullscreen Button -->
+    <button class="control-btn fullscreen-btn" 
+            (click)="toggleFullscreen()"
+            [disabled]="!isPlayerReady"
+            [attr.aria-label]="playerState.isFullscreen ? uiConstants.EXIT_FULLSCREEN_TEXT : uiConstants.FULLSCREEN_TEXT"
+            type="button">
+      <span class="btn-icon" [innerHTML]="getFullscreenIcon()"></span>
+      <span class="btn-text">{{ getFullscreenText() }}</span>
+    </button>
+  </div>
+</div>
+
+<!-- Screen Reader Only Content -->
+<div class="sr-only" aria-live="polite" aria-atomic="true">
+  <span *ngIf="playerState.isPlaying">Video is playing</span>
+  <span *ngIf="!playerState.isPlaying && playerState.currentTime > 0">Video is paused</span>
+  <span *ngIf="playerState.hasEnded">Video has ended</span>
+</div>

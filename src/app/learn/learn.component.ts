@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MatTabsModule } from '@angular/material/tabs';
 import { HeaderComponent } from '../shared/ui/header/header.component';
-import { CourseService, Course } from '../core/services/course.service';
-import { ProgressService } from '../core/services/progress.service';
+import { CourseService } from '../core/services/course.service';
+import { Course } from '../core/models';
 import { AuthService } from '../core/services/auth.service';
 import { VideoPlayerComponent } from './video-player/video-player.component';
 import { CurriculumPanelComponent } from './curriculum-panel/curriculum-panel.component';
@@ -12,6 +12,7 @@ import { OverviewPanelComponent } from '../shared/ui/overview-panel/overview-pan
 import { AuthorPanelComponent } from '../shared/ui/author-panel/author-panel.component';
 import { TestimonialsGridComponent } from '../shared/ui/testimonials-grid/testimonials-grid.component';
 import { MATERIAL } from '../shared/material.imports';
+import { CurriculumSection } from '../core/models/curriculum.model';
 
 @Component({
     selector: 'app-learn',
@@ -24,17 +25,17 @@ import { MATERIAL } from '../shared/material.imports';
     templateUrl: './learn.component.html',
     styleUrls: ['./learn.component.scss']
 })
-export class LearnComponent implements OnInit, AfterViewInit {
+export class LearnComponent implements OnInit {
     private route = inject(ActivatedRoute);
     private router = inject(Router);
     private svc = inject(CourseService);
-    private progress = inject(ProgressService);
+    // private progress = inject(ProgressService);
     private auth = inject(AuthService);
 
     @ViewChild('player') videoPlayer!: VideoPlayerComponent;
 
     course = signal<Course | null>(null);
-    sections = signal<any[]>([]);
+    sections = signal<CurriculumSection[]>([]);
     testimonials = signal<any[]>([]);
     author = signal<any | null>(null);
 
@@ -68,29 +69,7 @@ export class LearnComponent implements OnInit, AfterViewInit {
             this.svc.getTestimonials(c.id).subscribe(ts => this.testimonials.set(ts));
         });
 
-        const userId = this.auth.currentUser!.id;
-        this.progress.list(userId, courseId).subscribe(list => {
-            this.completedIds.set(new Set(list.filter(r => r.completed).map(r => r.lectureId)));
-        });
     }
-
-    ngAfterViewInit() {
-        // Set up the video player callback
-        if (this.videoPlayer) {
-            this.videoPlayer.onEnded = this.onEnded;
-        }
-    }
-
-    onEnded = () => {
-        const c = this.course(); if (!c) return;
-        const userId = this.auth.currentUser!.id;
-        const lec = this.lectureId();
-        const courseId = typeof c.id === 'string' ? Number(c.id) : c.id;
-        this.progress.setCompleted(userId, courseId, lec, true).subscribe(() => {
-            const set = new Set(this.completedIds()); set.add(lec);
-            this.completedIds.set(set);
-        });
-    };
 
     pickLecture(lectureId: number) {
         const c = this.course(); if (!c) return;

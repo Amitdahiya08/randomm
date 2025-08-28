@@ -2,8 +2,10 @@ import { Component, OnInit, ViewChild, ElementRef, inject } from '@angular/core'
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { HeaderComponent } from '../shared/ui/header/header.component';
-import { CourseService, Course } from '../core/services/course.service';
-import { EnrollmentService, Enrollment } from '../core/services/enrollment.service';
+import { CourseService } from '../core/services/course.service';
+import { Course } from '../core/models';
+import { EnrollmentService } from '../core/services/enrollment.service';
+import { Enrollment } from '../core/models/enrollment.model';
 import { AuthService } from '../core/services/auth.service';
 import { CourseCardComponent } from '../shared/ui/course-card/course-card.component';
 

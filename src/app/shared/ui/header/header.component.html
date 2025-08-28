@@ -60,13 +60,13 @@
           <img class="avatar-lg me-2" [src]="(user$|async)?.avatarUrl || ''" alt="">
           <div class="lh-sm">
             <div class="fw-semibold">{{ (user$|async)?.fullName }}</div>
-            <small class="text-muted">{{ (user$|async)?.track }}</small>
+            <small class="text-muted">{{ (user$|async)?.role }}</small>
           </div>
         </div>
         <hr class="dropdown-divider">
         <button mat-menu-item><mat-icon>person</mat-icon><span>My Profile</span></button>
         <button mat-menu-item><mat-icon>admin_panel_settings</mat-icon><span>Admin Console</span></button>
-        @if ((user$|async)?.role === 'Author' || (user$|async)?.role === 'Admin') {
+        @if (isInstructorOrAdmin(user$|async)) {
         <button mat-menu-item [routerLink]="'/author/courses'">
           <mat-icon>school</mat-icon><span>My Courses</span>
         </button>

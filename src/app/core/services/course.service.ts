@@ -1,139 +1,242 @@
 import { Injectable, inject, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
-
-export type Level = 'Beginner' | 'Intermediate' | 'Advanced';
-export interface Course {
-    id: number | string;
-    title: string;
-    subtitle: string;
-    authorId: number;
-    provider: { name: string; logoUrl: string };
-    thumbnailUrl: string;
-    rating: number;
-    reviewCount: number;
-    enrollmentCount: number;
-    difficulty: Level;
-    durationText: string;          // e.g., "6 months", "5 weeks", "8 weeks"
-    skills?: string[];
-    whatYoullLearn?: string[];
-    status: 'Published' | 'Draft' | 'Archived';
-    publishedDate: string;         // ISO
-}
+import { map, Observable } from 'rxjs';
+import {
+    Course,
+    CourseAuthor,
+    CourseCurriculum,
+    CourseTestimonial,
+    DurationBucket,
+    PublishedBucket,
+    DifficultyLevel as Level
+} from '../models';
+import { API_CONFIG, COURSE_SERVICE_CONSTANTS, UI_CONSTANTS } from '../constants/app.constants';
 
 @Injectable({ providedIn: 'root' })
 export class CourseService {
-    private http = inject(HttpClient);
-    private API = 'http://localhost:3000';
-    loading = signal(false);
+    private readonly http = inject(HttpClient);
+    private readonly baseApiUrl = API_CONFIG.BASE_URL;
 
-    getAll() {
-        this.loading.set(true);
-        return this.http.get<Course[]>(`${this.API}/courses`).pipe(
-            map(res => { this.loading.set(false); return res; })
+    // Public signals
+    readonly loading = signal(false);
+
+    // Private helper methods
+    private setLoading(isLoading: boolean): void {
+        this.loading.set(isLoading);
+    }
+
+    private buildApiUrl(endpoint: string): string {
+        return `${this.baseApiUrl}${endpoint}`;
+    }
+
+    /**
+     * Retrieves all courses from the API
+     * @returns Observable<Course[]> - All courses
+     */
+    getAll(): Observable<Course[]> {
+        this.setLoading(true);
+        return this.http.get<Course[]>(this.buildApiUrl(API_CONFIG.ENDPOINTS.COURSES)).pipe(
+            map(courses => {
+                this.setLoading(false);
+                return courses;
+            })
         );
     }
 
-    search(term: string) {
-        const q = term.trim().toLowerCase();
-        if (!q) return this.getPublished(); // empty query = all published results
+    /**
+     * Searches for courses based on a search term
+     * @param searchTerm - The term to search for
+     * @returns Observable<Course[]> - Filtered courses matching the search term
+     */
+    search(searchTerm: string): Observable<Course[]> {
+        const normalizedQuery = searchTerm.trim().toLowerCase();
+        if (!normalizedQuery) {
+            return this.getPublished(); // empty query = all published results
+        }
 
-        return this.http.get<Course[]>(`${this.API}/courses`).pipe(
+        return this.http.get<Course[]>(this.buildApiUrl(API_CONFIG.ENDPOINTS.COURSES)).pipe(
             map(courses =>
-                courses.filter(c =>
-                    c.status === 'Published' && // Only search published courses
-                    (c.title.toLowerCase().includes(q) ||
-                        c.skills?.some(s => s.toLowerCase().includes(q)))
+                courses.filter(course =>
+                    course.status === COURSE_SERVICE_CONSTANTS.STATUS.PUBLISHED && // Only search published courses
+                    (course.title.toLowerCase().includes(normalizedQuery) ||
+                        course.skills?.some(skill => skill.toLowerCase().includes(normalizedQuery)))
                 )
             )
         );
     }
-    getById(id: number | string) {
-        return this.http.get<Course>(`${this.API}/courses/${id}`);
+
+    /**
+     * Retrieves a specific course by ID
+     * @param courseId - The course ID
+     * @returns Observable<Course> - The requested course
+     */
+    getById(courseId: number | string): Observable<Course> {
+        return this.http.get<Course>(this.buildApiUrl(`${API_CONFIG.ENDPOINTS.COURSES}/${courseId}`));
     }
 
-    getAuthor(userId: number) {
-        return this.http.get<any>(`${this.API}/users/${userId}`);
+    /**
+     * Retrieves author information by user ID
+     * @param authorId - The author's user ID
+     * @returns Observable<CourseAuthor> - The author information
+     */
+    getAuthor(authorId: number): Observable<CourseAuthor> {
+        return this.http.get<CourseAuthor>(this.buildApiUrl(`${API_CONFIG.ENDPOINTS.USERS}/${authorId}`));
     }
 
-    /** simple related: share at least 1 skill with current, exclude itself, top 5 by rating */
-    getRelated(base: Course, limit = 5) {
+    /**
+     * Retrieves related courses based on shared skills
+     * Excludes the base course itself and returns top courses by rating
+     * @param baseCourse - The course to find related courses for
+     * @param maxResults - Maximum number of related courses to return
+     * @returns Observable<Course[]> - Related courses sorted by rating
+     */
+    getRelated(baseCourse: Course, maxResults: number = COURSE_SERVICE_CONSTANTS.DEFAULT_LIMITS.RELATED_COURSES): Observable<Course[]> {
         return this.getAll().pipe(
-            map(list => list
-                .filter(c =>
-                    c.id !== base.id &&
-                    c.status === 'Published' && // Only show published related courses
-                    c.skills?.some(s => base.skills?.includes(s))
+            map(courseList => courseList
+                .filter(course =>
+                    course.id !== baseCourse.id &&
+                    course.status === COURSE_SERVICE_CONSTANTS.STATUS.PUBLISHED && // Only show published related courses
+                    course.skills?.some(skill => baseCourse.skills?.includes(skill))
                 )
-                .sort((a, b) => b.rating - a.rating)
-                .slice(0, limit)
+                .sort((courseA, courseB) => courseB.rating - courseA.rating)
+                .slice(0, maxResults)
             )
         );
     }
 
-    /** curriculum, testimonials (json-server arrays) */
-    getCurriculum(courseId: number | string) {
-        return this.http.get<any[]>(`${this.API}/curriculum?courseId=${courseId}`);
+    /**
+     * Retrieves curriculum data for a specific course
+     * @param courseId - The course ID
+     * @returns Observable<CourseCurriculum[]> - Course curriculum data
+     */
+    getCurriculum(courseId: number | string): Observable<CourseCurriculum[]> {
+        const queryParam = `${COURSE_SERVICE_CONSTANTS.QUERY_PARAMS.COURSE_ID}=${courseId}`;
+        return this.http.get<CourseCurriculum[]>(this.buildApiUrl(`/curriculum?${queryParam}`));
     }
-    getTestimonials(courseId: number | string) {
-        return this.http.get<any[]>(`${this.API}/testimonials?courseId=${courseId}`);
+
+    /**
+     * Retrieves testimonials for a specific course
+     * @param courseId - The course ID
+     * @returns Observable<CourseTestimonial[]> - Course testimonials
+     */
+    getTestimonials(courseId: number | string): Observable<CourseTestimonial[]> {
+        const queryParam = `${COURSE_SERVICE_CONSTANTS.QUERY_PARAMS.COURSE_ID}=${courseId}`;
+        return this.http.get<CourseTestimonial[]>(this.buildApiUrl(`/testimonials?${queryParam}`));
     }
 
 
-    getNewlyLaunched(limit = 12) {
+    /**
+     * Retrieves newly launched courses sorted by publication date
+     * @param maxResults - Maximum number of courses to return
+     * @returns Observable<Course[]> - Newly launched courses
+     */
+    getNewlyLaunched(maxResults: number = COURSE_SERVICE_CONSTANTS.DEFAULT_LIMITS.NEWLY_LAUNCHED): Observable<Course[]> {
         return this.getAll().pipe(
-            map(list => [...list]
-                .filter(course => course.status === 'Published') // Only show published courses
-                .sort((a, b) => +new Date(b.publishedDate) - +new Date(a.publishedDate))
-                .slice(0, limit)
+            map(courseList => [...courseList]
+                .filter(course => course.status === COURSE_SERVICE_CONSTANTS.STATUS.PUBLISHED) // Only show published courses
+                .sort((courseA, courseB) => +new Date(courseB.publishedDate) - +new Date(courseA.publishedDate))
+                .slice(0, maxResults)
             )
         );
     }
 
-    byIds(ids: number[]) {
-        if (!ids?.length) return this.getAll().pipe(map(() => [] as Course[]));
-        const params = ids.map(id => `id=${id}`).join('&');
-        return this.http.get<Course[]>(`${this.API}/courses?${params}`);
+    /**
+     * Retrieves courses by their IDs
+     * @param courseIds - Array of course IDs
+     * @returns Observable<Course[]> - Courses matching the provided IDs
+     */
+    getByIds(courseIds: number[]): Observable<Course[]> {
+        if (!courseIds?.length) {
+            return this.getAll().pipe(map(() => [] as Course[]));
+        }
+        const queryParams = courseIds.map(courseId => `${COURSE_SERVICE_CONSTANTS.QUERY_PARAMS.ID}=${courseId}`).join('&');
+        return this.http.get<Course[]>(this.buildApiUrl(`${API_CONFIG.ENDPOINTS.COURSES}?${queryParams}`));
     }
 
-    /** Get only published courses */
-    getPublished() {
+    /**
+     * Retrieves only published courses
+     * @returns Observable<Course[]> - Published courses only
+     */
+    getPublished(): Observable<Course[]> {
         return this.getAll().pipe(
-            map(courses => courses.filter(course => course.status === 'Published'))
+            map(courses => courses.filter(course => course.status === COURSE_SERVICE_CONSTANTS.STATUS.PUBLISHED))
         );
     }
 
-    /** ===== Helpers for facets ===== */
+    // ===== Helper Methods for Course Categorization =====
 
-    // Duration bucket in days
-    parseDurationDays(d: string): number {
-        const t = d.toLowerCase();
-        const n = parseInt(t.replace(/[^\d]/g, ''), 10) || 0;
-        if (t.includes('week')) return n * 7;
-        if (t.includes('month')) return n * 30;
-        if (t.includes('day')) return n;
-        return n;
+    /**
+     * Parses duration text and converts it to days
+     * @param durationText - Duration string (e.g., "6 months", "5 weeks")
+     * @returns number - Duration in days
+     */
+    parseDurationInDays(durationText: string): number {
+        const normalizedText = durationText.toLowerCase();
+        const numericValue = parseInt(normalizedText.replace(/[^\d]/g, ''), UI_CONSTANTS.NUMERIC_BASE) || 0;
+
+        if (normalizedText.includes(COURSE_SERVICE_CONSTANTS.DURATION_KEYWORDS.WEEK)) {
+            return numericValue * COURSE_SERVICE_CONSTANTS.TIME_CALCULATIONS.DAYS_PER_WEEK;
+        }
+        if (normalizedText.includes(COURSE_SERVICE_CONSTANTS.DURATION_KEYWORDS.MONTH)) {
+            return numericValue * COURSE_SERVICE_CONSTANTS.TIME_CALCULATIONS.DAYS_PER_MONTH;
+        }
+        if (normalizedText.includes(COURSE_SERVICE_CONSTANTS.DURATION_KEYWORDS.DAY)) {
+            return numericValue;
+        }
+        return numericValue;
     }
 
-    durationBucket(d: string): 'lt1w' | '1to4w' | '1to3m' | '3to6m' | '6to12m' | 'gt12m' {
-        const days = this.parseDurationDays(d);
-        if (days < 7) return 'lt1w';
-        if (days <= 28) return '1to4w';
-        if (days <= 90) return '1to3m';
-        if (days <= 180) return '3to6m';
-        if (days <= 365) return '6to12m';
-        return 'gt12m';
+    /**
+     * Categorizes course duration into predefined buckets
+     * @param durationText - Duration string
+     * @returns DurationBucket - The appropriate duration category
+     */
+    getDurationBucket(durationText: string): DurationBucket {
+        const durationInDays = this.parseDurationInDays(durationText);
+        const { TIME_CALCULATIONS, DURATION_BUCKETS } = COURSE_SERVICE_CONSTANTS;
+
+        if (durationInDays < TIME_CALCULATIONS.DAYS_PER_WEEK) {
+            return DURATION_BUCKETS.LESS_THAN_1_WEEK;
+        }
+        if (durationInDays <= TIME_CALCULATIONS.WEEKS_IN_MONTH * TIME_CALCULATIONS.DAYS_PER_WEEK) {
+            return DURATION_BUCKETS.ONE_TO_FOUR_WEEKS;
+        }
+        if (durationInDays <= TIME_CALCULATIONS.DAYS_PER_QUARTER) {
+            return DURATION_BUCKETS.ONE_TO_THREE_MONTHS;
+        }
+        if (durationInDays <= TIME_CALCULATIONS.DAYS_PER_HALF_YEAR) {
+            return DURATION_BUCKETS.THREE_TO_SIX_MONTHS;
+        }
+        if (durationInDays <= TIME_CALCULATIONS.DAYS_PER_YEAR) {
+            return DURATION_BUCKETS.SIX_TO_TWELVE_MONTHS;
+        }
+        return DURATION_BUCKETS.GREATER_THAN_12_MONTHS;
     }
 
-    publishedBucket(iso: string): 'thisWeek' | 'thisMonth' | 'last6m' | 'thisYear' | 'older' {
-        const dt = new Date(iso);
-        const now = new Date();
-        const ms = now.getTime() - dt.getTime();
-        const d = ms / 86400000;
-        if (d <= 7) return 'thisWeek';
-        if (d <= 30) return 'thisMonth';
-        if (d <= 180) return 'last6m';
-        if (now.getFullYear() === dt.getFullYear()) return 'thisYear';
-        return 'older';
+    /**
+     * Categorizes course publication date into time-based buckets
+     * @param publishedDateIso - ISO date string
+     * @returns PublishedBucket - The appropriate time category
+     */
+    getPublishedBucket(publishedDateIso: string): PublishedBucket {
+        const publishedDate = new Date(publishedDateIso);
+        const currentDate = new Date();
+        const timeDifferenceMs = currentDate.getTime() - publishedDate.getTime();
+        const daysDifference = timeDifferenceMs / COURSE_SERVICE_CONSTANTS.TIME_CALCULATIONS.MILLISECONDS_PER_DAY;
+        const { PUBLISHED_BUCKETS, TIME_CALCULATIONS } = COURSE_SERVICE_CONSTANTS;
+
+        if (daysDifference <= TIME_CALCULATIONS.DAYS_PER_WEEK) {
+            return PUBLISHED_BUCKETS.THIS_WEEK;
+        }
+        if (daysDifference <= TIME_CALCULATIONS.DAYS_PER_MONTH) {
+            return PUBLISHED_BUCKETS.THIS_MONTH;
+        }
+        if (daysDifference <= TIME_CALCULATIONS.DAYS_IN_SIX_MONTHS) {
+            return PUBLISHED_BUCKETS.LAST_SIX_MONTHS;
+        }
+        if (currentDate.getFullYear() === publishedDate.getFullYear()) {
+            return PUBLISHED_BUCKETS.THIS_YEAR;
+        }
+        return PUBLISHED_BUCKETS.OLDER;
     }
 }

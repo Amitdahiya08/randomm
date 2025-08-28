@@ -23,7 +23,25 @@
                 </div>
 
                 <div class="actions mt-3 d-flex align-items-center gap-3">
-                    <button mat-raised-button color="primary" class="btn-enroll" (click)="enroll()">Enroll Now</button>
+                    @if (isEnrolled()) {
+                    <button type="button" mat-raised-button color="accent" class="btn-enrolled" disabled>
+                        Enrolled
+                    </button>
+                    <button type="button" mat-raised-button color="primary" class="btn-continue"
+                        (click)="startLearning()">
+                        Continue Learning
+                    </button>
+                    } @else {
+                    <button type="button" mat-raised-button color="primary" class="btn-enroll" (click)="enroll()"
+                        [disabled]="isEnrolling()">
+                        @if (isEnrolling()) {
+                        <mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner>
+                        Enrolling...
+                        } @else {
+                        Enroll Now
+                        }
+                    </button>
+                    }
                     <div class="enrolled muted">{{ course()!.enrollmentCount | number }} already enrolled</div>
                 </div>
             </div>

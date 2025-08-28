@@ -74,7 +74,7 @@
       "publishedDate": "2023-05-20T00:00:00.000Z"
     },
     {
-      "id": 102,
+      "id": "102",
       "title": "Python for Data Science, AI & Development",
       "subtitle": "Hands-on Python, NumPy, Pandas, and APIs.",
       "authorId": 2,
@@ -107,7 +107,7 @@
       ]
     },
     {
-      "id": 103,
+      "id": "103",
       "title": "Google Data Analytics Course-2",
       "subtitle": "Advanced analytics and dashboards.",
       "authorId": 2,
@@ -139,7 +139,7 @@
       ]
     },
     {
-      "id": 104,
+      "id": "104",
       "title": "Big Data Essentials",
       "subtitle": "HDFS, MapReduce, Spark basics.",
       "authorId": 2,
@@ -171,7 +171,7 @@
       ]
     },
     {
-      "id": 105,
+      "id": "105",
       "title": "Modern Machine Learning with Python",
       "subtitle": "Scikit-learn pipelines to deployment.",
       "authorId": 2,
@@ -203,7 +203,7 @@
       ]
     },
     {
-      "id": 106,
+      "id": "106",
       "title": "Advanced Python Programming",
       "subtitle": "Typing, concurrency, asyncio, patterns.",
       "authorId": 2,
@@ -233,7 +233,7 @@
       ]
     },
     {
-      "id": 107,
+      "id": "107",
       "title": "SQL for Data Analysis",
       "subtitle": "From SELECT to window functions.",
       "authorId": 2,
@@ -264,7 +264,7 @@
       ]
     },
     {
-      "id": 108,
+      "id": "108",
       "title": "Generative AI: Prompt Engineering",
       "subtitle": "Patterns and techniques for LLMs.",
       "authorId": 2,
@@ -1045,6 +1045,30 @@
       "userId": 4,
       "courseId": 101,
       "progressPercent": 100
+    },
+    {
+      "id": "b81f",
+      "userId": "fa11",
+      "courseId": 105,
+      "status": "enrolled",
+      "progressPercent": 0,
+      "enrolledDate": "2025-08-28T17:18:38.751Z"
+    },
+    {
+      "id": "8904",
+      "userId": "fa11",
+      "courseId": 104,
+      "status": "enrolled",
+      "progressPercent": 0,
+      "enrolledDate": "2025-08-28T17:19:03.562Z"
+    },
+    {
+      "id": "2fc5",
+      "userId": "fa11",
+      "courseId": 107,
+      "status": "enrolled",
+      "progressPercent": 0,
+      "enrolledDate": "2025-08-28T17:22:44.949Z"
     }
   ],
   "banners": [

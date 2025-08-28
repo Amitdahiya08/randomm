@@ -26,12 +26,14 @@
 
             <!-- Grid -->
             <div class="course-grid row g-3">
-                @for (c of paginated(); track c.id) {
+                @for (course of paginated(); track course.id) {
                 <div class="col-md-6 col-lg-4">
-                    <a class="no-decoration" [routerLink]="['/courses', c.id]">
-                        <app-course-card [thumbnailUrl]="c.thumbnailUrl" [title]="c.title" [provider]="c.provider.name"
-                            [rating]="c.rating" [reviewCount]="c.reviewCount" [enrollmentCount]="c.enrollmentCount"
-                            [difficulty]="c.difficulty" [durationText]="c.durationText" badgeText="New Launch">
+                    <a class="no-decoration" [routerLink]="['/courses', course.id]">
+                        <app-course-card [thumbnailUrl]="course.thumbnailUrl" [title]="course.title"
+                            [provider]="course.provider.name" [rating]="course.rating"
+                            [reviewCount]="course.reviewCount" [enrollmentCount]="course.enrollmentCount"
+                            [difficulty]="course.difficulty" [durationText]="course.durationText"
+                            badgeText="New Launch">
                         </app-course-card>
                     </a>
                 </div>
@@ -40,11 +42,15 @@
 
 
             <!-- Pagination -->
-            <div class="pagination-wrap d-flex justify-content-center mt-4" *ngIf="totalPages() > 1">
-                <button mat-stroked-button (click)="page.set(page()-1)" [disabled]="page()===1">Prev</button>
+            @if (totalPages() > 1) {
+            <div class="pagination-wrap d-flex justify-content-center mt-4">
+                <button type="button" mat-stroked-button (click)="goToPreviousPage()"
+                    [disabled]="!canGoToPreviousPage()">Prev</button>
                 <span class="px-3">Page {{ page() }} of {{ totalPages() }}</span>
-                <button mat-stroked-button (click)="page.set(page()+1)" [disabled]="page()===totalPages()">Next</button>
+                <button type="button" mat-stroked-button (click)="goToNextPage()"
+                    [disabled]="!canGoToNextPage()">Next</button>
             </div>
+            }
         </div>
     </div>
 </div>
