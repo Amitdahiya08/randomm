@@ -1,0 +1,91 @@
+<app-header></app-header>
+
+<div class="admin container-xxl py-4">
+    <!-- Tabs -->
+    <mat-tab-group class="admin-tabs">
+        <mat-tab label="User Management">
+            <div class="toolbar d-flex align-items-center justify-content-between mb-2 black-text-inputs">
+                <mat-form-field appearance="fill" class="search">
+                    <mat-label>Search User</mat-label>
+                    <input matInput [formControl]="query" />
+                    @if (query.value) {
+                    <button mat-icon-button matSuffix (click)="query.setValue('')"><i class="bi bi-x-lg"></i></button>
+                    }
+                </mat-form-field>
+
+                <div class="sort d-flex align-items-center gap-2">
+                    <span class="muted">Sort:</span>
+                    <mat-form-field appearance="fill" class="sort-field">
+                        <mat-select [value]="sort()" (valueChange)="sort.set($event)">
+                            <mat-option value="latest">Latest</mat-option>
+                            <mat-option value="az">A-Z</mat-option>
+                            <mat-option value="za">Z-A</mat-option>
+                            <mat-option value="role">Role</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+
+            <!-- Table -->
+            <div class="table card">
+                <div class="thead row gx-0">
+                    <div class="col-5 th">User Name</div>
+                    <div class="col-3 th">Roles</div>
+                    <div class="col-3 th">Joined Date</div>
+                    <div class="col-1 th text-end">Actions</div>
+                </div>
+
+                @for (u of paginated(); track u.id) {
+                <div class="row gx-0 tr">
+                    <div class="col-5 td">
+                        <div class="user d-flex align-items-center gap-2">
+                            <img [src]="u.avatarUrl" class="avatar">
+                            <div>
+                                <div class="name">{{ u.fullName }}</div>
+                                <small class="muted">{{ u.username }}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 td">
+                        <span class="pill" [class.admin]="u.role==='Admin'" [class.author]="u.role==='Author'">{{ u.role
+                            }}</span>
+                    </div>
+                    <div class="col-3 td">{{ u.joinDate | date:'MM/dd/yyyy' }}</div>
+                    <div class="col-1 td text-end">
+                        <a class="link" href="javascript:void(0)" (click)="openEdit(u)">Edit</a>
+                    </div>
+                </div>
+                }
+
+                @if (paginated().length === 0) {
+                <div class="empty">No users found.</div>
+                }
+            </div>
+
+            <!-- Pagination -->
+            <div class="pager d-flex align-items-center justify-content-between mt-2">
+                <div class="muted">TOTAL RECORDS: {{ filtered().length }}</div>
+
+                <div class="controls d-flex align-items-center gap-2">
+                    <button mat-stroked-button (click)="page.set(page()-1)" [disabled]="page()===1">Prev</button>
+                    <span>Page {{ page() }} / {{ totalPages() }}</span>
+                    <button mat-stroked-button (click)="page.set(page()+1)"
+                        [disabled]="page()===totalPages()">Next</button>
+
+                    <mat-form-field appearance="fill" class="size">
+                        <mat-label>Per Page</mat-label>
+                        <mat-select [value]="pageSize()" (valueChange)="pageSize.set($event); page.set(1)">
+                            <mat-option [value]="10">10</mat-option>
+                            <mat-option [value]="20">20</mat-option>
+                            <mat-option [value]="50">50</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </div>
+            </div>
+        </mat-tab>
+
+        <mat-tab label="Dynamic Banner">
+            <div class="placeholder card p-4">Coming soon…</div>
+        </mat-tab>
+    </mat-tab-group>
+</div>

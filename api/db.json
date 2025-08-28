@@ -27,14 +27,28 @@
       "location": "New York, USA"
     },
     {
+      "id": "99",
+      "username": "adminuser",
+      "email": "admin@example.com",
+      "password": "Admin@123",
+      "fullName": "System Administrator",
+      "track": "Platform Admin",
+      "avatarUrl": "https://i.pravatar.cc/150?u=adminuser",
+      "joinDate": "2021-01-01T00:00:00.000Z",
+      "role": "Admin",
+      "bio": "Dedicated system administrator ensuring platform stability, user management, and overall governance.",
+      "location": "San Francisco, USA"
+    },
+    {
       "id": "fa11",
-      "fullName": "ABC",
+      "fullName": "Mr. Scientist",
       "username": "abc",
       "email": "abc@gmail.com",
       "password": "abc123",
       "role": "Learner",
       "avatarUrl": "https://i.pravatar.cc/150?u=abc",
-      "joinDate": "2025-08-27T17:13:11.830Z"
+      "joinDate": "2025-08-27T17:13:11.830Z",
+      "bio": "Hello I am mr scientist "
     }
   ],
   "courses": [
@@ -357,6 +371,27 @@
       ],
       "status": "Archived",
       "publishedDate": "2020-01-15T00:00:00.000Z"
+    },
+    {
+      "id": "d141",
+      "title": "Sample",
+      "subtitle": "Sample dummy",
+      "authorId": 2,
+      "provider": {
+        "name": "Google",
+        "logoUrl": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Logo-placeholder.png"
+      },
+      "thumbnailUrl": "https://img.freepik.com/free-photo/woman-beach-with-her-baby-enjoying-sunset_52683-144131.jpg?size=626&ext=jpg",
+      "rating": 0,
+      "reviewCount": 0,
+      "enrollmentCount": 0,
+      "difficulty": "Beginner",
+      "durationText": "",
+      "skills": [],
+      "whatYoullLearn": [],
+      "requirements": [],
+      "status": "Draft",
+      "publishedDate": "2025-08-28T19:29:41.385Z"
     }
   ],
   "curriculum": [

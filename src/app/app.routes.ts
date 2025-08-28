@@ -8,6 +8,9 @@ import { CourseDetailsComponent } from './course-details/course-details.componen
 import { authorGuard } from './core/guards/author.guard';
 import { LearnComponent } from './learn/learn.component';
 import { MyCoursesComponent } from './my-courses/my-courses.component';
+import { AdminConsoleComponent } from './admin/admin-console.component';
+import { UserManagementComponent } from './admin/user-management/user-management.component';
+import { adminGuard } from './core/guards/admin.guard';
 
 
 export const routes: Routes = [
@@ -18,6 +21,8 @@ export const routes: Routes = [
     { path: 'learn/:courseId/lecture/:lectureId', component: LearnComponent, canActivate: [authGuard] },
     { path: 'search', component: CourseDiscoveryComponent, canActivate: [authGuard] },
     { path: 'courses/:id', component: CourseDetailsComponent, canActivate: [authGuard] },
+    { path: 'admin', component: AdminConsoleComponent, canActivate: [authGuard, adminGuard] },
+    { path: 'admin/users', component: UserManagementComponent, canActivate: [authGuard, adminGuard] },
     { path: 'author/courses', component: MyCoursesComponent, canActivate: [authGuard, authorGuard] },
     { path: '**', redirectTo: 'dashboard' }
 ];

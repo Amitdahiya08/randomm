@@ -1,4 +1,5 @@
 @import 'bootstrap/dist/css/bootstrap.min.css';
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css');
 
 /* ===== Design tokens ===== */
 :root {
@@ -189,6 +190,7 @@ body {
     }
 }
 
+
 /* Outlined form field specific overrides */
 .mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field {
     --mdc-outlined-text-field-input-text-color: var(--text);
@@ -306,6 +308,200 @@ body {
     color: var(--accent) !important;
 }
 
+/* ===== BLACK TEXT INPUT STYLING CLASS ===== */
+/* Universal class to ensure all input fields and labels have black text */
+.black-text-inputs {
+
+    /* Material Design Form Fields - Maximum Specificity */
+    .mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field {
+
+        /* Input text color - Multiple selectors for maximum specificity */
+        .mat-mdc-input-element,
+        input.mat-mdc-input-element,
+        input[matInput] {
+            color: #000000 !important;
+            caret-color: #007acc !important;
+        }
+
+        /* Label colors - All possible label selectors */
+        .mat-mdc-floating-label,
+        .mdc-floating-label,
+        .mat-mdc-form-field-label,
+        label {
+            color: #000000 !important;
+        }
+
+        /* Focused label color */
+        &.mat-focused .mat-mdc-floating-label,
+        &.mat-focused .mdc-floating-label,
+        &.mat-focused .mat-mdc-form-field-label {
+            color: #000000 !important;
+        }
+
+        /* Placeholder text */
+        .mat-mdc-input-element::placeholder,
+        input.mat-mdc-input-element::placeholder,
+        input[matInput]::placeholder {
+            color: #666666 !important;
+            opacity: 0.8 !important;
+        }
+
+        /* Error messages stay red for visibility */
+        .mat-mdc-form-field-error,
+        .mat-error {
+            color: #d32f2f !important;
+        }
+    }
+
+    /* Additional high-specificity overrides */
+    .mat-mdc-form-field {
+
+        /* Input text color */
+        .mat-mdc-input-element,
+        input.mat-mdc-input-element,
+        input[matInput] {
+            color: #000000 !important;
+            caret-color: #007acc !important;
+        }
+
+        /* Label colors */
+        .mat-mdc-floating-label,
+        .mdc-floating-label,
+        .mat-mdc-form-field-label,
+        label {
+            color: #000000 !important;
+        }
+
+        /* Focused label color */
+        &.mat-focused .mat-mdc-floating-label,
+        &.mat-focused .mdc-floating-label,
+        &.mat-focused .mat-mdc-form-field-label {
+            color: #000000 !important;
+        }
+
+        /* Placeholder text */
+        .mat-mdc-input-element::placeholder,
+        input.mat-mdc-input-element::placeholder,
+        input[matInput]::placeholder {
+            color: #666666 !important;
+            opacity: 0.8 !important;
+        }
+
+        /* Error messages stay red for visibility */
+        .mat-mdc-form-field-error,
+        .mat-error {
+            color: #d32f2f !important;
+        }
+    }
+
+    /* Override Material Design CSS variables for black text - MAXIMUM FORCE */
+    .mat-mdc-form-field.mat-mdc-form-field.mat-mdc-form-field,
+    .mat-mdc-form-field,
+    .mdc-text-field,
+    .mdc-text-field--filled,
+    .mdc-text-field--outlined {
+        /* Outlined fields */
+        --mdc-outlined-text-field-input-text-color: #000000 !important;
+        --mdc-outlined-text-field-label-text-color: #000000 !important;
+        --mdc-outlined-text-field-focus-label-text-color: #000000 !important;
+        --mdc-outlined-text-field-hover-label-text-color: #000000 !important;
+        --mdc-outlined-text-field-caret-color: #007acc !important;
+
+        /* Filled fields */
+        --mdc-filled-text-field-input-text-color: #000000 !important;
+        --mdc-filled-text-field-label-text-color: #000000 !important;
+        --mdc-filled-text-field-focus-label-text-color: #000000 !important;
+        --mdc-filled-text-field-hover-label-text-color: #000000 !important;
+        --mdc-filled-text-field-caret-color: #007acc !important;
+
+        /* Additional Material variables */
+        --mdc-text-field-input-text-color: #000000 !important;
+        --mdc-text-field-label-text-color: #000000 !important;
+        --mdc-text-field-focus-label-text-color: #000000 !important;
+        --mdc-text-field-hover-label-text-color: #000000 !important;
+        --mdc-text-field-caret-color: #007acc !important;
+    }
+
+    /* Select dropdowns */
+    .mat-mdc-select-value-text {
+        color: #000000 !important;
+    }
+
+    .mat-mdc-select-placeholder {
+        color: #666666 !important;
+    }
+
+    .mat-mdc-select-arrow {
+        color: #333333 !important;
+    }
+
+    /* Checkboxes and labels */
+    .mat-mdc-checkbox {
+        .mdc-form-field>label {
+            color: #000000 !important;
+        }
+    }
+
+    /* Native HTML inputs (fallback) */
+    input,
+    textarea,
+    select {
+        color: #000000 !important;
+
+        &::placeholder {
+            color: #666666 !important;
+            opacity: 0.8 !important;
+        }
+    }
+
+    /* Labels for native inputs */
+    label {
+        color: #000000 !important;
+    }
+
+    /* Search field specific styling */
+    .search-field {
+        .mat-mdc-input-element {
+            color: #000000 !important;
+        }
+
+        .mat-mdc-input-element::placeholder {
+            color: #666666 !important;
+            opacity: 0.8;
+        }
+    }
+
+    /* NUCLEAR OPTION - Force black text on ALL elements within this class */
+    * {
+        color: #000000 !important;
+    }
+
+    /* But allow specific elements to have their intended colors */
+    .mat-mdc-form-field-error,
+    .mat-error,
+    mat-error {
+        color: #d32f2f !important;
+    }
+
+    .mat-icon,
+    mat-icon,
+    .bi {
+        color: #333333 !important;
+    }
+
+    button,
+    .mat-mdc-button {
+        color: #000000 !important;
+    }
+
+    /* Placeholder text should be gray */
+    ::placeholder,
+    *::placeholder {
+        color: #666666 !important;
+        opacity: 0.8 !important;
+    }
+}
+
 /* Select dropdown specific fixes */
 .mat-mdc-select-value-text {
     color: var(--text) !important;
@@ -419,4 +615,106 @@ input[matInput]::placeholder {
 
 .card-text {
     color: var(--text) !important;
+}
+
+/* ===== ULTIMATE BLACK TEXT OVERRIDES - HIGHEST PRIORITY ===== */
+/* These rules come last to ensure maximum specificity */
+
+/* Force black text in all black-text-inputs containers */
+.black-text-inputs input,
+.black-text-inputs input[matInput],
+.black-text-inputs .mat-mdc-input-element,
+.black-text-inputs input.mat-mdc-input-element {
+    color: #000000 !important;
+    caret-color: #007acc !important;
+}
+
+/* Force black labels */
+.black-text-inputs label,
+.black-text-inputs .mat-mdc-floating-label,
+.black-text-inputs .mdc-floating-label,
+.black-text-inputs .mat-mdc-form-field-label,
+.black-text-inputs mat-label {
+    color: #000000 !important;
+}
+
+/* Force black text in select dropdowns */
+.black-text-inputs .mat-mdc-select-value-text,
+.black-text-inputs .mat-mdc-select-value {
+    color: #000000 !important;
+}
+
+/* Gray placeholders */
+.black-text-inputs input::placeholder,
+.black-text-inputs .mat-mdc-input-element::placeholder {
+    color: #666666 !important;
+    opacity: 0.8 !important;
+}
+
+/* Override any Material Design CSS variables within black-text-inputs */
+.black-text-inputs {
+    --mdc-filled-text-field-input-text-color: #000000 !important;
+    --mdc-filled-text-field-label-text-color: #000000 !important;
+    --mdc-filled-text-field-focus-label-text-color: #000000 !important;
+    --mdc-filled-text-field-hover-label-text-color: #000000 !important;
+    --mdc-outlined-text-field-input-text-color: #000000 !important;
+    --mdc-outlined-text-field-label-text-color: #000000 !important;
+    --mdc-outlined-text-field-focus-label-text-color: #000000 !important;
+    --mdc-outlined-text-field-hover-label-text-color: #000000 !important;
+    --mdc-text-field-input-text-color: #000000 !important;
+    --mdc-text-field-label-text-color: #000000 !important;
+    --mdc-text-field-focus-label-text-color: #000000 !important;
+    --mdc-text-field-hover-label-text-color: #000000 !important;
+}
+
+/* SPECIAL OVERRIDE FOR HEADER SEARCH FIELD */
+.app-header .black-text-inputs .search-field input,
+.app-header .black-text-inputs .search-field .mat-mdc-input-element,
+.app-header .black-text-inputs .search-field input.mat-mdc-input-element {
+    color: #000000 !important;
+    caret-color: #007acc !important;
+}
+
+.app-header .black-text-inputs .search-field .mat-mdc-floating-label,
+.app-header .black-text-inputs .search-field .mdc-floating-label,
+.app-header .black-text-inputs .search-field mat-label {
+    color: #000000 !important;
+}
+
+.app-header .black-text-inputs .search-field .mat-icon {
+    color: #000000 !important;
+}
+
+/* ===== BOOTSTRAP ICONS STYLING ===== */
+/* Ensure Bootstrap icons display properly and have consistent sizing */
+.bi {
+    font-size: 1rem;
+    line-height: 1;
+    vertical-align: middle;
+}
+
+/* Icon sizing for different contexts */
+.mat-icon-button .bi {
+    font-size: 1.25rem;
+}
+
+.mat-menu-item .bi {
+    font-size: 1.1rem;
+    margin-right: 8px;
+    vertical-align: middle;
+}
+
+/* Admin card icons */
+.admin-card .icon .bi {
+    font-size: 2rem;
+}
+
+/* Ensure icons inherit color properly */
+.bi {
+    color: inherit;
+}
+
+/* Black text inputs - Bootstrap icons */
+.black-text-inputs .bi {
+    color: #000000 !important;
 }

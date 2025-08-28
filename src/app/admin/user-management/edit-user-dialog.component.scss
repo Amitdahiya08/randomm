@@ -1,0 +1,32 @@
+:host ::ng-deep .mat-mdc-dialog-surface {
+    background: var(--surface);
+    color: var(--text);
+}
+
+.summary .avatar-xl {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: 2px solid #2a3646;
+}
+
+.name {
+    font-weight: 800;
+}
+
+.tile {
+    background: #192330;
+    border: 1px solid #223244;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.history {
+    margin: 0;
+    padding-left: 1rem;
+}
+
+.muted {
+    color: var(--muted);
+}

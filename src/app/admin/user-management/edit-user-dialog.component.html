@@ -1,0 +1,86 @@
+<h3 mat-dialog-title>Edit User</h3>
+
+<div mat-dialog-content class="content">
+    <!-- Header summary -->
+    <div class="summary d-flex align-items-center gap-3 mb-2">
+        <img [src]="user.avatarUrl" class="avatar-xl" alt="avatar">
+        <div>
+            <div class="name">{{ user.fullName }}</div>
+            <div class="muted">{{ user.email }}</div>
+            <div class="muted">{{ user.location }} • Since {{ user.joinDate | date:'d MMMM y' }}</div>
+        </div>
+    </div>
+
+    <mat-tab-group>
+        <mat-tab label="Profile">
+            <!-- ✅ Bind the Reactive Form here -->
+            <form class="p-2 black-text-inputs" [formGroup]="profileForm">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Name</mat-label>
+                            <input matInput formControlName="fullName" />
+                            <mat-error *ngIf="profileForm.get('fullName')?.invalid">Name is required</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Email</mat-label>
+                            <input matInput formControlName="email" />
+                            <mat-error *ngIf="profileForm.get('email')?.invalid">Enter a valid email</mat-error>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-md-6">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>Role</mat-label>
+                            <mat-select formControlName="role">
+                                <mat-option value="Admin">Admin</mat-option>
+                                <mat-option value="Author">Author</mat-option>
+                                <mat-option value="Learner">Learner</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col-12">
+                        <mat-form-field appearance="fill" class="w-100">
+                            <mat-label>User Bio</mat-label>
+                            <textarea matInput rows="5" formControlName="bio"></textarea>
+                        </mat-form-field>
+                    </div>
+                </div>
+            </form>
+        </mat-tab>
+
+        <mat-tab label="Activities">
+            <div class="p-2">
+                <div class="stats row g-3">
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="tile">Learning Hours <b>24</b></div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="tile">Pending Courses <b>3</b></div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="tile">Rated Courses <b>12</b></div>
+                    </div>
+                    <div class="col-sm-6 col-lg-3">
+                        <div class="tile">Certificates <b>2</b></div>
+                    </div>
+                </div>
+                <div class="muted mt-2">Learning history (sample)</div>
+                <ul class="history">
+                    <li>Google Data Analytics — 80% complete</li>
+                    <li>Python for Data Science — 35% complete</li>
+                    <li>Prompt Engineering — 100% complete</li>
+                </ul>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</div>
+
+<div mat-dialog-actions align="end">
+    <button mat-stroked-button (click)="close()">Cancel</button>
+    <button mat-raised-button color="primary" (click)="save()" [disabled]="profileForm.invalid">Save Changes</button>
+</div>

@@ -16,7 +16,7 @@
       <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
       <button type="button" mat-icon-button matSuffix (click)="toggle()"
         [attr.aria-label]="'Toggle password visibility'">
-        <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+        <i class="bi" [class.bi-eye-slash]="hide()" [class.bi-eye]="!hide()"></i>
       </button>
       @if (form.controls.password.hasError('required')) {
       <mat-error>Required</mat-error>

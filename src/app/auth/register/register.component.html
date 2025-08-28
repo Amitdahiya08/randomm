@@ -31,7 +31,7 @@
       <mat-label>Password</mat-label>
       <input matInput [type]="hide() ? 'password' : 'text'" formControlName="password" />
       <button type="button" mat-icon-button matSuffix (click)="toggle()">
-        <mat-icon>{{ hide() ? 'visibility_off' : 'visibility' }}</mat-icon>
+        <i class="bi" [class.bi-eye-slash]="hide()" [class.bi-eye]="!hide()"></i>
       </button>
       @if (form.controls.password.invalid) {
       <mat-error>Min 6 characters</mat-error>

@@ -25,14 +25,13 @@
     </mat-tab-group>
 
     <!-- Toolbar -->
-    <div class="toolbar d-flex align-items-center justify-content-between mt-2">
+    <div class="toolbar d-flex align-items-center justify-content-between mt-2 black-text-inputs">
         <mat-form-field appearance="fill" class="search">
             <mat-label>Search course</mat-label>
-            <mat-icon matPrefix>search</mat-icon>
             <input matInput [formControl]="q" placeholder="Search course" />
             @if (q.value) {
             <button mat-icon-button matSuffix (click)="q.setValue('')" aria-label="Clear">
-                <mat-icon>close</mat-icon>
+                <i class="bi bi-x-lg"></i>
             </button>
             }
         </mat-form-field>

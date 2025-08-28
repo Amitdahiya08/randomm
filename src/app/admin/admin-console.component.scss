@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.page-title {
+  font-weight: 800;
+  margin: 6px 0 12px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 12px;
+}
+
+.breadcrumb-wrap {
+  color: var(--muted);
+  margin-bottom: 6px;
+
+  .crumb {
+    color: #9ad4ff;
+    text-decoration: none;
+  }
+
+  .crumb.current {
+    color: var(--text);
+  }
+
+  .sep {
+    margin: 0 6px;
+    color: #6a7e95;
+  }
+}

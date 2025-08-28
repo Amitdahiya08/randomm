@@ -1,0 +1,9 @@
+<a class="card-wrap no-decoration" [routerLink]="link || null">
+    <div class="icon">
+        <i class="bi" [class]="'bi-' + getBootstrapIcon(icon)"></i>
+    </div>
+    <div class="meta">
+        <div class="t">{{ title }}</div>
+        <div class="c">{{ countText }}</div>
+    </div>
+</a>

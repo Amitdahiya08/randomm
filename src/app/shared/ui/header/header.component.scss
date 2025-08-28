@@ -37,6 +37,45 @@
         }
     }
 
+    /* BLACK TEXT OVERRIDES FOR HEADER SEARCH */
+    .black-text-inputs .search-field {
+        /* Override CSS variables for black text */
+        --mdc-filled-text-field-input-text-color: #000000 !important;
+        --mdc-filled-text-field-label-text-color: #000000 !important;
+        --mdc-filled-text-field-focus-label-text-color: #000000 !important;
+        --mdc-filled-text-field-hover-label-text-color: #000000 !important;
+        --mdc-filled-text-field-caret-color: #007acc !important;
+
+        /* Force black text with maximum specificity */
+        .mat-mdc-input-element,
+        input.mat-mdc-input-element,
+        input[matInput] {
+            color: #000000 !important;
+            caret-color: #007acc !important;
+        }
+
+        /* Force black labels */
+        .mat-mdc-floating-label,
+        .mdc-floating-label,
+        mat-label {
+            color: #000000 !important;
+        }
+
+        /* Gray placeholders */
+        .mat-mdc-input-element::placeholder,
+        input.mat-mdc-input-element::placeholder,
+        input[matInput]::placeholder {
+            color: #666666 !important;
+            opacity: 0.8 !important;
+        }
+
+        /* Black search icon */
+        .mat-icon,
+        .bi {
+            color: #000000 !important;
+        }
+    }
+
     .ac-list {
         position: absolute;
         top: 56px;
